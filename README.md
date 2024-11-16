@@ -8,7 +8,7 @@
 > Также здесь будут находится конспекты материалов, которые я прошёл во внеучебное время, которые в теории могут вам помочь лучше понять материал лекции
 
 
-![sigma](https://i.pinimg.com/originals/c5/52/8e/c5528e6c4bb0a0ed0b7a3fcf127c68a2.gif)
+![small-dancing-white-cat-dance-funny](https://github.com/user-attachments/assets/e4eed1a6-fd9c-423d-a371-3df1ac3d5c2f)
 
 ___
 # Обучение
