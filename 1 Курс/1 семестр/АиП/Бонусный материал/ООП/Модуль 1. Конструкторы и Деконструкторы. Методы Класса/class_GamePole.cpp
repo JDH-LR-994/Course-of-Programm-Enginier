@@ -5,12 +5,16 @@
 // Создание игрового поля
 class GamePole {
     private:
+    
     std::size_t width, height; // Ширина и высота игрового поля
     Cell** pole; // Двумерный массив клеток
 
     // Метод для случайной генерации мин на поле
     void generate_mines() {}
 
+    //Метод для получения информации о количестве мин, вокруг клетки
+    std::size_t get_mines_counter(size_t i, size_t j) { }
+    
     public:
     // Конструктор класса GamePole
     GamePole(std::size_t w, std::size_t h) {
@@ -40,3 +44,21 @@ void GamePole::generate_mines() {
             }
         }
 }
+
+std::size_t GamePole::get_mines_counter(size_t i, size_t j) {
+    std::size_t count = 0;
+    // Проверяем соседние клетки
+    for (size_t x = -1; x <= 1; x++) {
+        for (size_t y = -1; y <= 1; y++) {
+            // Проверяем, не выходит ли за пределы поля
+            if (i + x >= 0 && i + x < width && j + y >= 0 && j + y < height) {
+                // Проверяем, установлена ли мина в соседней клетке
+                if (this->pole[i + x][j + y].is_mine) {
+                    count++;
+                    }
+                }
+            }
+        return count;
+    }
+}
+
