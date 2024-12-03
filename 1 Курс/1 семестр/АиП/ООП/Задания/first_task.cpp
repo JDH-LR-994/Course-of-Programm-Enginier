@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iomanip> //Для вывода числа с определенным количеством знаков после запятой
 
+
 class Triangle
 {
 public:
@@ -39,7 +40,7 @@ public:
     {
         return area;
     }
-    //Сдвинуть все точки на k 
+    // Сдвинуть все точки на k
     Triangle &operator+=(int k)
     {
         A += k;
@@ -49,20 +50,20 @@ public:
     }
 
 private:
-    //Описание точек
+    // Описание точек
     class Point
     {
     public:
         Point() : x_(0), y_(0) {}
         Point(int x, int y) : x_(x), y_(y) {}
-        
-        //Ввод координат точки
+
+        // Ввод координат точки
         friend std::istream &operator>>(std::istream &stream, Point &pt)
         {
             stream >> pt.x_ >> pt.y_;
             return stream;
         }
-        //Вывод координат точки
+        // Вывод координат точки
         friend std::ostream &operator<<(std::ostream &stream, Point &pt)
         {
             stream << "(" << pt.x_ << "," << pt.y_ << ") ";
@@ -97,14 +98,14 @@ private:
         double AB = A.get_lenght(B);
         double AC = A.get_lenght(C);
         double BC = B.get_lenght(C);
-        this->perimeter = AB + AC + BC; //Сразу считаем периметр треугольника
+        this->perimeter = AB + AC + BC; // Сразу считаем периметр треугольника
         double s = perimeter / 2;
-        this->area = std::sqrt(s * (s - AB) * (s - AC) * (s - BC)); //Сразу считаем площадь треугольника
+        this->area = std::sqrt(s * (s - AB) * (s - AC) * (s - BC)); // Сразу считаем площадь треугольника
         return (AB + AC > BC) && (BC + AB > AC) && (BC + AC > AB);
     }
 };
 
-//Само задание
+// Само задание
 int main()
 {
     Triangle triangleR;
