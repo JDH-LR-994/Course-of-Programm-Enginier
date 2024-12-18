@@ -1,0 +1,9 @@
+CompositeShape.o: CompositeShape.cpp CompositeShape.h Shape.h \
+ FrameRectangle.h Point.h
+FrameRectangle.o: FrameRectangle.cpp FrameRectangle.h Point.h
+IsoscelesTrapezium.o: IsoscelesTrapezium.cpp IsoscelesTrapezium.h Shape.h \
+ FrameRectangle.h Point.h
+main.o: main.cpp Rectangle.h Shape.h FrameRectangle.h Point.h \
+ IsoscelesTrapezium.h CompositeShape.h
+Point.o: Point.cpp Point.h
+Rectangle.o: Rectangle.cpp Rectangle.h Shape.h FrameRectangle.h Point.h

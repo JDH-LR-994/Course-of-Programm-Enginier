@@ -1,0 +1,45 @@
+# 2019-07-03 Wed alexeit a common Makefile for cpp files
+# 2021-01-20 Fri alexeit separate options
+
+# based on https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile
+
+# executable file always 'app'
+appname := app
+
+# compilator
+CXX := c++
+# debug info
+CXXFLAGS := -g
+# add std c++17
+CXXFLAGS += -std=c++1z
+# add warnings
+CXXFLAGS += -Wall -Wextra -Wold-style-cast
+# add sanitizers
+CXXFLAGS += -fsanitize=address -fsanitize=undefined
+# add sanitizers lib
+#CXXFLAGS += -static-libasan
+
+srcfiles := $(shell find . -maxdepth 1 -name "*.cpp")
+objects  := $(patsubst %.cpp, %.o, $(srcfiles))
+
+run: all
+	./app
+
+all: $(appname)
+
+$(appname): $(objects)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(appname) $(objects) $(LDLIBS)
+
+depend: .depend
+
+.depend: $(srcfiles)
+	rm -f ./.depend
+	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
+
+clean:
+	rm -f $(objects)
+
+dist-clean: clean
+	rm -f *~ .depend
+
+include .depend
