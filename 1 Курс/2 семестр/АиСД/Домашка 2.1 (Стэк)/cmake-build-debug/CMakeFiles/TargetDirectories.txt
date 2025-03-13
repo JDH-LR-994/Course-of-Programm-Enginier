@@ -1,0 +1,3 @@
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/_2_1___.dir
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/rebuild_cache.dir
