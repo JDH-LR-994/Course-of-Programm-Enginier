@@ -14,19 +14,21 @@ public:
 
 class WrongStackSize final : public std::exception {
 public:
-    const char *what() const noexcept override {
+    [[nodiscard]] const char *what() const noexcept override {
         return "Wrong stack size";
     }
 };
+
 class StackOverflow final : public std::exception {
 public:
-    const char *what() const noexcept override {
+    [[nodiscard]] const char *what() const noexcept override {
         return "Stack overflow";
     }
 };
+
 class StackUnderflow final : public std::exception {
 public:
-    const char *what() const noexcept override {
+    [[nodiscard]] const char *what() const noexcept override {
         return "Stack underflow";
     }
 };
@@ -34,20 +36,44 @@ public:
 template<typename T>
 class StackArray final : public Stack<T> {
     T *data;
-    std::size_t size_ = 0;
+    std::size_t size_;
     std::size_t capacity_;
 
 public:
     explicit StackArray<T>(long long size);
+
+    StackArray(const StackArray &other)
+        : data(other.data),
+          size_(other.size_),
+          capacity_(other.capacity_) {
+    }
+
+    StackArray(StackArray &&other) noexcept
+        : data(other.data),
+          size_(other.size_),
+          capacity_(other.capacity_) {
+    }
+
+    StackArray &operator=(const StackArray &other);
+
+    StackArray &operator=(StackArray &&other) noexcept;
+
     void push(const T &e) override;
+
     T pop() override;
+
     bool isEmpty() override { return size_ == 0; }
     ~StackArray() override { delete[] data; }
+
+    static bool checkBalanceBrackets(const char *text, int maxDeep);
+
+    void static getPostfixFromInfix(const char *infix, char *postfix,
+                                    size_t stackSize);
 };
 
 template<typename T>
 StackArray<T>::StackArray(const long long size) {
-    //Почему не long long у size?
+    //Почему long long у size?
     //std::size_t не давал бы смысл для WrongStackSize (нет отрицательных чисел)
     //int - не даёт возможности в bad_alloc уйти
 
@@ -60,11 +86,32 @@ StackArray<T>::StackArray(const long long size) {
         throw std::bad_alloc();
     }
     capacity_ = size;
+    size_ = 0;
+}
+
+template<typename T>
+StackArray<T> &StackArray<T>::operator=(const StackArray &other) {
+    if (this == &other)
+        return *this;
+    data = other.data;
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    return *this;
+}
+
+template<typename T>
+StackArray<T> &StackArray<T>::operator=(StackArray &&other) noexcept {
+    if (this == &other)
+        return *this;
+    data = other.data;
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    return *this;
 }
 
 template<typename T>
 void StackArray<T>::push(const T &e) {
-    if (size_ == capacity_) {
+    if (capacity_ == size_) {
         throw StackOverflow();
     }
     data[size_++] = e;
@@ -76,4 +123,31 @@ T StackArray<T>::pop() {
         throw StackUnderflow();
     }
     return data[--size_];
+}
+
+template<typename T>
+bool StackArray<T>::checkBalanceBrackets(const char *text, const int maxDeep) {
+    StackArray<char> stack(maxDeep);
+
+    for (size_t i = 0; text[i] != '\0'; ++i) {
+        char currentChar = text[i];
+
+        if (currentChar == '(' || currentChar == '{' || currentChar == '[') {
+            try {
+                stack.push(currentChar);
+            } catch (StackOverflow &) {
+                return false;
+            }
+        } else if ((currentChar == ')' && !stack.isEmpty() && stack.pop() != '(') ||
+                   (currentChar == '}' && !stack.isEmpty() && stack.pop() != '{') ||
+                   (currentChar == ']' && !stack.isEmpty() && stack.pop() != '[')) {
+            return false;
+        }
+    }
+
+    return stack.isEmpty();
+}
+
+template<typename T>
+void StackArray<T>::getPostfixFromInfix(const char *infix, char *postfix, size_t stackSize) {
 }
