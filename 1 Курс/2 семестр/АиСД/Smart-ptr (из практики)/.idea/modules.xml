@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Smart-ptr (из практики).iml" filepath="$PROJECT_DIR$/.idea/Smart-ptr (из практики).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Cpp.iml" filepath="$PROJECT_DIR$/.idea/Cpp.iml" />
     </modules>
   </component>
 </project>

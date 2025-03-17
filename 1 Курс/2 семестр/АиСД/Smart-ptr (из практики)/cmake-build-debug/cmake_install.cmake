@@ -1,8 +1,8 @@
-# Install script for directory: C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Smart-ptr (из практики)
+# Install script for directory: C:/Learning/Cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Smart_ptr____")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Cpp")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -52,6 +52,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Smart-ptr (из практики)/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Learning/Cpp/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

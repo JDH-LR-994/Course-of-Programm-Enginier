@@ -1,3 +1,3 @@
-C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/Smart_ptr____.dir
-C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Learning/Cpp/cmake-build-debug/CMakeFiles/Cpp.dir
+C:/Learning/Cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Learning/Cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

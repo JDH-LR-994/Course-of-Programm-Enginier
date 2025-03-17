@@ -17,24 +17,24 @@ void testCheckBracketsWithStackOverflowExpression();
 void testCheckBracketsWithEmptyStackExpression();
 
 inline void main_test() {
-    void testInitializationStackArrayWithWrongNegativeSize();
-    void testInitializationStackArrayWithHugeSize();
-    void testMethodPopWithoutItemsInStackArray();
-    void testMethodPopWithItemsInStackArray();
-    void testPushWithItemsWhichCountLessThanStackArraySize();
-    void testPushWithItemsWhichCountGreaterThanStackArraySize();
-    void testMethodIsEmptyWithEmptyStackArray();
-    void testMethodIsEmptyWithItemsInStackArray();
-    void testCheckBracketsWithRightExpression();
-    void testCheckBracketsWithStackOverflowExpression();
-    void testCheckBracketsWithEmptyStackExpression();
+    testInitializationStackArrayWithWrongNegativeSize();
+    testInitializationStackArrayWithHugeSize();
+    testMethodPopWithoutItemsInStackArray();
+    testMethodPopWithItemsInStackArray();
+    testPushWithItemsWhichCountLessThanStackArraySize();
+    testPushWithItemsWhichCountGreaterThanStackArraySize();
+    testMethodIsEmptyWithEmptyStackArray();
+    testMethodIsEmptyWithItemsInStackArray();
+    testCheckBracketsWithRightExpression();
+    testCheckBracketsWithStackOverflowExpression();
+    testCheckBracketsWithEmptyStackExpression();
 }
 
 inline void testInitializationStackArrayWithWrongNegativeSize() {
     try {
         StackArray<int> stackArray(-10);
         assert(false);
-    } catch (const WrongStackSize &e) {
+    } catch ([[maybe_unused]] const WrongStackSize &e) {
         assert(true);
     }
 }
@@ -43,7 +43,7 @@ inline void testInitializationStackArrayWithHugeSize() {
     try {
         StackArray<int> stackArray(2000000000000);
         assert(false);
-    } catch (const std::bad_alloc &e) {
+    } catch ([[maybe_unused]] const std::bad_alloc &e) {
         assert(true);
     }
 }
@@ -53,7 +53,7 @@ inline void testMethodPopWithoutItemsInStackArray() {
     try {
         stackArray.pop();
         assert(false);
-    } catch (const StackUnderflow &e) {
+    } catch ([[maybe_unused]] const StackUnderflow &e) {
         assert(true);
     }
 }
@@ -78,7 +78,7 @@ inline void testPushWithItemsWhichCountGreaterThanStackArraySize() {
     stackArray.push(20);
     try {
         stackArray.push(30);
-    } catch (const StackOverflow &e) {
+    } catch ([[maybe_unused]] const StackOverflow &e) {
         assert(true);
     }
 }
@@ -101,7 +101,7 @@ inline void testCheckBracketsWithRightExpression() {
 inline void testCheckBracketsWithStackOverflowExpression() {
     try {
         StackArray<std::string>::checkBalanceBrackets("([{([{()}])}])", 5);
-    } catch (StackOverflow &e) {
+    } catch ([[maybe_unused]] StackOverflow &e) {
         assert(true);
     }
 }
