@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(_2_1___
     StackArray.hpp
     StackTestDrive.cpp
-        Test.h)
+        Test.h
+        TaskFunc.hpp)

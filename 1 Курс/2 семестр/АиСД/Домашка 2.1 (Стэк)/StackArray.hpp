@@ -65,10 +65,6 @@ public:
     bool isEmpty() override { return size_ == 0; }
     ~StackArray() override { delete[] data; }
 
-    static bool checkBalanceBrackets(const char *text, int maxDeep);
-
-    void static getPostfixFromInfix(const char *infix, char *postfix,
-                                    size_t stackSize);
 };
 
 template<typename T>
@@ -123,31 +119,4 @@ T StackArray<T>::pop() {
         throw StackUnderflow();
     }
     return data[--size_];
-}
-
-template<typename T>
-bool StackArray<T>::checkBalanceBrackets(const char *text, const int maxDeep) {
-    StackArray<char> stack(maxDeep);
-
-    for (size_t i = 0; text[i] != '\0'; ++i) {
-        char currentChar = text[i];
-
-        if (currentChar == '(' || currentChar == '{' || currentChar == '[') {
-            try {
-                stack.push(currentChar);
-            } catch (StackOverflow &) {
-                return false;
-            }
-        } else if ((currentChar == ')' && !stack.isEmpty() && stack.pop() != '(') ||
-                   (currentChar == '}' && !stack.isEmpty() && stack.pop() != '{') ||
-                   (currentChar == ']' && !stack.isEmpty() && stack.pop() != '[')) {
-            return false;
-        }
-    }
-
-    return stack.isEmpty();
-}
-
-template<typename T>
-void StackArray<T>::getPostfixFromInfix(const char *infix, char *postfix, size_t stackSize) {
 }

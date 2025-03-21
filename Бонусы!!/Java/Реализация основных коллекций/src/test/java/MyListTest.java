@@ -1,12 +1,11 @@
 import MyCollection.ArrayListAndLinkedList.MyArrayList;
-import MyCollection.ArrayListAndLinkedList.MyLinkedList;
 import MyCollection.ArrayListAndLinkedList.MyList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyArrayListTest {
+class MyListTest {
 
     private MyList<String> myArrayList;
 
@@ -83,6 +82,14 @@ class MyArrayListTest {
         assertEquals("BMW", myArrayList.get(myArrayList.size() - 1)); // Проверка последнего элемента
         assertEquals(101, myArrayList.size()); // Проверка размера
     }
-
-
+    @Test
+    public void checkContainsWithoutElement() {
+        String string = "BMW";
+        assertFalse(myArrayList.contains(string));
+    }
+    @Test
+    public void checkContainsWithElement() {
+        String string = "1";
+        assertTrue(myArrayList.contains(string));
+    }
 }

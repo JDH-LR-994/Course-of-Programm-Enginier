@@ -12,9 +12,10 @@ public class MyArrayList<T> implements MyList<T> {
     int size = 0;
 
     @Override
-    public void add(T t) {
+    public boolean add(T t) {
         increaseArraySize();
         array[size++] = t;
+        return true;
     }
 
     @Override
@@ -46,16 +47,27 @@ public class MyArrayList<T> implements MyList<T> {
         size = 0;
     }
 
+    @Override
+    public boolean contains(T t) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
-    public void insert(T t, int index) {
-        if (index < 0 || index > size) { // Разрешаем вставку на позицию size
+    public boolean insert(T t, int index) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         increaseArraySize();
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = t;
         size++;
+        return true;
     }
 
     @Override

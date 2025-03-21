@@ -8,7 +8,7 @@ import java.util.Iterator;
 @EqualsAndHashCode
 public class MyLinkedList<T> implements MyList<T> {
     @Override
-    public void add(T t) {
+    public boolean add(T t) {
         if (size == 0) {
             head = new Node(null, t, null);
             tail = head;
@@ -18,7 +18,9 @@ public class MyLinkedList<T> implements MyList<T> {
             secondTail.next = tail;
         }
         size++;
+        return true;
     }
+
 
     @Override
     public int size() {
@@ -57,14 +59,29 @@ public class MyLinkedList<T> implements MyList<T> {
         size = 0;
     }
 
+    private int findElement(T t) {
+        Node node = head;
+        for (int i = 0; i < size; i++) {
+            if (t.equals(node.value)) {
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
+    }
+
     @Override
-    public void insert(T t, int index) throws IndexOutOfBoundsException {
+    public boolean contains(T t) {
+        return findElement(t) != -1;
+    }
+
+    @Override
+    public boolean insert(T t, int index) throws IndexOutOfBoundsException {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         if (index == size) {
-            add(t);
-            return;
+            return add(t);
         }
         Node nodeNext = getNode(index);
         Node nodePrev = nodeNext.previous;
@@ -76,16 +93,14 @@ public class MyLinkedList<T> implements MyList<T> {
             head = newNode;
         }
         size++;
+        return true;
     }
 
     @Override
     public boolean remove(T item) {
-        Node node = head;
-        for (int i = 0; i < size; i++) {
-            if (item.equals(node.value)) {
-                return removeAt(i);
-            }
-            node = node.next;
+        int index = findElement(item);
+        if (index != -1) {
+            removeAt(index);
         }
         return false;
     }
