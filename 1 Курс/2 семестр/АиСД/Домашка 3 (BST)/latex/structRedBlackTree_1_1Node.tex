@@ -1,0 +1,116 @@
+\doxysection{Red\+Black\+Tree\texorpdfstring{$<$}{<} T, T0 \texorpdfstring{$>$}{>}\+::Node Struct Reference}
+\hypertarget{structRedBlackTree_1_1Node}{}\label{structRedBlackTree_1_1Node}\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+
+
+Структура узла дерева.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structRedBlackTree_1_1Node_ac6a9202e23444345f6e38be67eeb1648}{Node}} (T k, \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}} c, \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}} p=\mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}}\{\})
+\begin{DoxyCompactList}\small\item\em Конструктор узла. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \mbox{\hyperlink{structRedBlackTree_1_1Node_a1cba02791324474012935250ad9fce0a}{key\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Ключ узла. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}} \mbox{\hyperlink{structRedBlackTree_1_1Node_ae2973d23dae157a7f2862e6e0ce6cd56}{color\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Цвет узла. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{Node\+Ptr}} \mbox{\hyperlink{structRedBlackTree_1_1Node_aeab7b5b8ab6f79c32cc2f1329c7361a4}{left\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Левый потомок. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{Node\+Ptr}} \mbox{\hyperlink{structRedBlackTree_1_1Node_af46b4b91ee6b35ae4f18b02132187a35}{right\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Правый потомок. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}} \mbox{\hyperlink{structRedBlackTree_1_1Node_a5529711b2b848c40fcdc70a82a106a64}{parent\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Ссылка на родителя (слабый указатель). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename T0 = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$\newline
+struct Red\+Black\+Tree$<$ T, T0 $>$\+::\+Node}
+Структура узла дерева. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structRedBlackTree_1_1Node_ac6a9202e23444345f6e38be67eeb1648}\label{structRedBlackTree_1_1Node_ac6a9202e23444345f6e38be67eeb1648} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!Node@{Node}}
+\index{Node@{Node}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+\mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{T}]{k,  }\item[{\mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}}}]{c,  }\item[{\mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}}}]{p = {\ttfamily \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}}\{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор узла. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & Ключ узла. \\
+\hline
+{\em c} & Цвет узла. \\
+\hline
+{\em p} & Ссылка на родителя (по умолчанию пустая). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structRedBlackTree_1_1Node_ae2973d23dae157a7f2862e6e0ce6cd56}\label{structRedBlackTree_1_1Node_ae2973d23dae157a7f2862e6e0ce6cd56} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!color\_@{color\_}}
+\index{color\_@{color\_}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{color\_}{color\_}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+\mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}} \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::color\+\_\+}
+
+
+
+Цвет узла. 
+
+\Hypertarget{structRedBlackTree_1_1Node_a1cba02791324474012935250ad9fce0a}\label{structRedBlackTree_1_1Node_a1cba02791324474012935250ad9fce0a} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!key\_@{key\_}}
+\index{key\_@{key\_}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{key\_}{key\_}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+T \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::key\+\_\+}
+
+
+
+Ключ узла. 
+
+\Hypertarget{structRedBlackTree_1_1Node_aeab7b5b8ab6f79c32cc2f1329c7361a4}\label{structRedBlackTree_1_1Node_aeab7b5b8ab6f79c32cc2f1329c7361a4} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!left\_@{left\_}}
+\index{left\_@{left\_}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{left\_}{left\_}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{Node\+Ptr}} \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::left\+\_\+}
+
+
+
+Левый потомок. 
+
+\Hypertarget{structRedBlackTree_1_1Node_a5529711b2b848c40fcdc70a82a106a64}\label{structRedBlackTree_1_1Node_a5529711b2b848c40fcdc70a82a106a64} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!parent\_@{parent\_}}
+\index{parent\_@{parent\_}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{parent\_}{parent\_}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+\mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{Weak\+Node\+Ptr}} \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::parent\+\_\+}
+
+
+
+Ссылка на родителя (слабый указатель). 
+
+\Hypertarget{structRedBlackTree_1_1Node_af46b4b91ee6b35ae4f18b02132187a35}\label{structRedBlackTree_1_1Node_af46b4b91ee6b35ae4f18b02132187a35} 
+\index{RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}!right\_@{right\_}}
+\index{right\_@{right\_}!RedBlackTree$<$ T, T0 $>$::Node@{RedBlackTree$<$ T, T0 $>$::Node}}
+\doxysubsubsection{\texorpdfstring{right\_}{right\_}}
+{\footnotesize\ttfamily template$<$typename T , typename T0  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+comparable$<$\+T$>$\+::value$>$$>$ \\
+\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{Node\+Ptr}} \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree}}$<$ T, T0 $>$\+::\+Node\+::right\+\_\+}
+
+
+
+Правый потомок. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{RedBlackTree_8hpp}{Red\+Black\+Tree.\+hpp}}\end{DoxyCompactItemize}

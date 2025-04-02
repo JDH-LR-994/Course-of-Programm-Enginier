@@ -7,25 +7,25 @@
 
 inline void testInitializationStackArrayWithHugeSize();
 
-void testInitializationStackArrayWithWrongNegativeSize();
+inline void testInitializationStackArrayWithWrongNegativeSize();
 
-void testMethodPopWithoutItemsInStackArray();
+inline void testMethodPopWithoutItemsInStackArray();
 
-void testMethodPopWithItemsInStackArray();
+inline void testMethodPopWithItemsInStackArray();
 
-void testPushWithItemsWhichCountLessThanStackArraySize();
+inline void testPushWithItemsWhichCountLessThanStackArraySize();
 
-void testPushWithItemsWhichCountGreaterThanStackArraySize();
+inline void testPushWithItemsWhichCountGreaterThanStackArraySize();
 
-void testMethodIsEmptyWithEmptyStackArray();
+inline void testMethodIsEmptyWithEmptyStackArray();
 
-void testMethodIsEmptyWithItemsInStackArray();
+inline void testMethodIsEmptyWithItemsInStackArray();
 
-void testCheckBracketsWithRightExpression();
+inline void testCheckBracketsWithRightExpression();
 
-void testCheckBracketsWithStackOverflowExpression();
+inline void testCheckBracketsWithStackOverflowExpression();
 
-void testCheckBracketsWithEmptyStackExpression();
+inline void testCheckBracketsWithEmptyStackExpression();
 
 inline void main_test() {
     testInitializationStackArrayWithWrongNegativeSize();
@@ -119,51 +119,6 @@ inline void testCheckBracketsWithStackOverflowExpression() {
 
 inline void testCheckBracketsWithEmptyStackExpression() {
     assert(TaskFunc::checkBalanceBrackets("", 10));
-}
-
-inline void testDivision() {
-    const char* infix = "8/2+3";
-    char postfix[100];
-    constexpr size_t stackSize = 100;
-
-    TaskFunc::getPostfixFromInfix(infix, postfix, stackSize);
-    assert(std::string(postfix) == "82/3+");
-}
-
-inline void testNestedBrackets() {
-    const char* infix = "3*(4-(2+1))";
-    char postfix[100];
-    constexpr size_t stackSize = 100;
-
-    TaskFunc::getPostfixFromInfix(infix, postfix, stackSize);
-    assert(std::string(postfix) == "3421+-*");
-}
-
-inline void testExpressionWithBrackets() {
-    const char* infix = "3*(4+2)";
-    char postfix[100];
-    constexpr size_t stackSize = 100;
-
-    TaskFunc::getPostfixFromInfix(infix, postfix, stackSize);
-    assert(std::string(postfix) == "342+*");
-}
-
-inline void testMultipleOperators() {
-    const char* infix = "3+4*2-1";
-    char postfix[100];
-    constexpr size_t stackSize = 100;
-
-    TaskFunc::getPostfixFromInfix(infix, postfix, stackSize);
-    assert(std::string(postfix) == "342*+1-");
-}
-
-inline void testSimpleExpression() {
-    const char* infix = "3+4";
-    char postfix[100];
-    constexpr size_t stackSize = 100;
-
-    TaskFunc::getPostfixFromInfix(infix, postfix, stackSize);
-    assert(std::string(postfix) == "34+");
 }
 
 #endif //TEST_H

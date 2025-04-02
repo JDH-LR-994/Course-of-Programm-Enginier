@@ -20,7 +20,6 @@ public:
     MySharedPtr(MySharedPtr && other) = delete;
     MySharedPtr & operator=(MySharedPtr && other) = delete;
 
-
 private:
     T* ptr_;
     std::size_t* cnt {nullptr};

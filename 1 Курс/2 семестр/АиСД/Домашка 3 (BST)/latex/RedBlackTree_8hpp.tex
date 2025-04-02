@@ -1,0 +1,72 @@
+\doxysection{Red\+Black\+Tree.\+hpp File Reference}
+\hypertarget{RedBlackTree_8hpp}{}\label{RedBlackTree_8hpp}\index{RedBlackTree.hpp@{RedBlackTree.hpp}}
+
+
+Реализация красно-\/чёрного дерева Красно-\/чёрное дерево -\/ это бинарное дерево поиска, где у каждого узла есть атрибут цвета, при этом\+:  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include "{}Stack\+Array.\+hpp"{}}\newline
+{\ttfamily \#include "{}Queue\+List.\+hpp"{}}\newline
+Include dependency graph for Red\+Black\+Tree.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RedBlackTree_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structis__comparable}{is\+\_\+comparable$<$ T, typename $>$}}
+\begin{DoxyCompactList}\small\item\em SFINAE-\/проверка наличия операторов сравнения у типа T. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structis__comparable_3_01T_00_01void__t_3_01decltype_07std_1_1declval_3_01T_01_4_07_08_3_01std_1e48e7da6649477c9985c85ca47a7a7c9}{is\+\_\+comparable$<$ T, void\+\_\+t$<$ decltype(std\+::declval$<$ T $>$()$<$ std\+::declval$<$ T $>$()), decltype(std\+::declval$<$ T $>$() $>$ std\+::declval$<$ T $>$()), decltype(std\+::declval$<$ T $>$()==std\+::declval$<$ T $>$()), decltype(std\+::declval$<$ T $>$() !=std\+::declval$<$ T $>$()) $>$ $>$}}
+\item 
+class \mbox{\hyperlink{classRedBlackTree}{Red\+Black\+Tree$<$ T, T0 $>$}}
+\begin{DoxyCompactList}\small\item\em Класс красно-\/чёрного дерева. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structRedBlackTree_1_1Node}{Red\+Black\+Tree$<$ T, T0 $>$\+::\+Node}}
+\begin{DoxyCompactList}\small\item\em Структура узла дерева. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Red\+Black\+Tree$<$ T, T0 $>$\+::\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Итератор для обхода красно-\/чёрного дерева в порядке in-\/order (симметричный порядок). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... $>$ }\\using \mbox{\hyperlink{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e}{void\+\_\+t}} = void
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Реализация красно-\/чёрного дерева Красно-\/чёрное дерево -\/ это бинарное дерево поиска, где у каждого узла есть атрибут цвета, при этом\+: 
+
+\begin{DoxyAuthor}{Author}
+JDH-\/\+LR-\/994
+\end{DoxyAuthor}
+
+\begin{DoxyEnumerate}
+\item Узел должен быть либо красным, либо чёрным
+\item Корень -\/ как правило чёрный
+\item Все фиктивные листья (NIL -\/ узлы) -\/ чёрные
+\item Оба потомка каждого красного узла -\/ чёрные
+\item Любой простой путь от узла-\/предка до листового узла потомка содержит одинаковое число чёрных узлов
+\end{DoxyEnumerate}
+
+ВАЖНО! Как и любое другое бинарное дерево поиска, КЧД может работать только с типами, которые можно сравнивать (указано вторым шаблонным параметром)
+
+\begin{DoxyNote}{Note}
+Все операции (вставка, поиск) работают за O(log n) в худшем случае. 
+\end{DoxyNote}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e}\label{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e} 
+\index{RedBlackTree.hpp@{RedBlackTree.hpp}!void\_t@{void\_t}}
+\index{void\_t@{void\_t}!RedBlackTree.hpp@{RedBlackTree.hpp}}
+\doxysubsubsection{\texorpdfstring{void\_t}{void\_t}}
+{\footnotesize\ttfamily template$<$typename... $>$ \\
+using \mbox{\hyperlink{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e}{void\+\_\+t}} =  void}
+

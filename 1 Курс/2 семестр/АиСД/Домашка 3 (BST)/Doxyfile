@@ -1,0 +1,11 @@
+PROJECT_NAME           = "RedBlackTree Documentation"
+INPUT                  = ./RedBlackTree.hpp  # Путь к вашему файлу
+RECURSIVE              = NO                 # Не искать в подпапках
+EXTRACT_ALL            = YES                # Документировать всё
+EXTRACT_PRIVATE        = YES                # Включая private-методы
+GENERATE_HTML          = YES                # Создать HTML
+HTML_OUTPUT            = ./docs             # Папка для HTML
+HAVE_DOT               = YES                # Включить диаграммы (нужен graphviz)
+DOT_IMAGE_FORMAT = svg # Лучшее качество изображений
+INTERACTIVE_SVG = YES  # Интерактивные SVG-графы
+ALIASES += "verbatim=@verbatim"

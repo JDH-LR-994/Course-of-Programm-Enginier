@@ -1,0 +1,1 @@
+CMakeLists.txt not found in C:\MyRepositories\Course-of-Programm-Enginier\1 Курс\1 семестр\Linux\Лабы (Шмаков)\Файлы для 6 лабы Select CMakeLists.txt

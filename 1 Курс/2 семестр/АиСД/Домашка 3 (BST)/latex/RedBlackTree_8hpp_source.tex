@@ -1,0 +1,628 @@
+\doxysection{Red\+Black\+Tree.\+hpp}
+\hypertarget{RedBlackTree_8hpp_source}{}\label{RedBlackTree_8hpp_source}\mbox{\hyperlink{RedBlackTree_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ REDBLACKTREE\_HPP}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ REDBLACKTREE\_HPP}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}StackArray.hpp"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}QueueList.hpp"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...>}
+\DoxyCodeLine{00031\ \textcolor{keyword}{using\ }\mbox{\hyperlink{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e}{void\_t}}\ =\ void;}
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ \textcolor{keywordtype}{void}>}
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structis__comparable}{is\_comparable}}\ :\ std::false\_type\ \{}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structis__comparable}{is\_comparable}}<T,\ \mbox{\hyperlink{RedBlackTree_8hpp_ab8ddf9531fc4ac7ce28574db20c8f20e}{void\_t}}<}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T>()\ <\ std::declval<T>()),}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T>()\ >\ std::declval<T>()),}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T>()\ ==\ std::declval<T>()),}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T>()\ !=\ std::declval<T>())}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ >\ >\ :\ std::true\_type\ \{}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ template<typename\ T,\ typename\ T0\ =\ std::enable\_if\_t<is\_comparable<T>::value>\ >}
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}}\ \{\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{RED}},\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{BLACK}}\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{struct\ }Node;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ =\ std::shared\_ptr<Node>;\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{WeakNodePtr}}\ =\ std::weak\_ptr<Node>;\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRedBlackTree_1_1Node}{Node}}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{structRedBlackTree_1_1Node_a1cba02791324474012935250ad9fce0a}{key\_}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}}\ \mbox{\hyperlink{structRedBlackTree_1_1Node_ae2973d23dae157a7f2862e6e0ce6cd56}{color\_}};\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{structRedBlackTree_1_1Node_aeab7b5b8ab6f79c32cc2f1329c7361a4}{left\_}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{structRedBlackTree_1_1Node_af46b4b91ee6b35ae4f18b02132187a35}{right\_}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{WeakNodePtr}}\ \mbox{\hyperlink{structRedBlackTree_1_1Node_a5529711b2b848c40fcdc70a82a106a64}{parent\_}};\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structRedBlackTree_1_1Node_ac6a9202e23444345f6e38be67eeb1648}{Node}}(T\ k,\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}}\ c,\ \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{WeakNodePtr}}\ p\ =\ \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{WeakNodePtr}}\{\})\ :\ \mbox{\hyperlink{structRedBlackTree_1_1Node_a1cba02791324474012935250ad9fce0a}{key\_}}(k),}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structRedBlackTree_1_1Node_ae2973d23dae157a7f2862e6e0ce6cd56}{color\_}}(c),}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structRedBlackTree_1_1Node_aeab7b5b8ab6f79c32cc2f1329c7361a4}{left\_}}(\mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}),}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structRedBlackTree_1_1Node_af46b4b91ee6b35ae4f18b02132187a35}{right\_}}(\mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}),}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structRedBlackTree_1_1Node_a5529711b2b848c40fcdc70a82a106a64}{parent\_}}(p)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a707784cd92e4004097ab7384d531b487}{RedBlackTree}}():\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}(\mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a2605e56428d439e46c1f43691084b068}{RedBlackTree}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&)\ =\ \textcolor{keyword}{delete};\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\mbox{\hyperlink{classRedBlackTree_a6fc77dd8ff902cb52cff6e92c2bfd8d5}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&)\ =\ \textcolor{keyword}{delete};\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a707784cd92e4004097ab7384d531b487}{RedBlackTree}}(\mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\&other)\ \textcolor{keyword}{noexcept}\ }
+\DoxyCodeLine{00112\ \ \ \ \ ;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\mbox{\hyperlink{classRedBlackTree_a6fc77dd8ff902cb52cff6e92c2bfd8d5}{operator=}}(\mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\&other)\ \textcolor{keyword}{noexcept}\ }
+\DoxyCodeLine{00115\ \ \ \ \ ;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_aa2abb86e74689f158fb7c7a5c99802eb}{\string~RedBlackTree}}()\ =\ \textcolor{keywordflow}{default};\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a492b193eddc3104bf243739e94a46484}{iterator\_category}}\ =\ std::forward\_iterator\_tag;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a24b71760234e21dd7c265f42c98c82ec}{value\_type}}\ =\ T;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a5d4f1912824dcea7e8d4e202e5139ffa}{difference\_type}}\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a06bff49b3a59c851c7c423a4fc0e144c}{pointer}}\ =\ T\ *;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a50e91351d03c78a3938cd32f323ef064}{reference}}\ =\ T\ \&;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}},\ \textcolor{keywordtype}{size\_t}\ max\_stack\_size\ =\ 100);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a50e91351d03c78a3938cd32f323ef064}{reference}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_af9e24b33aab58cda65cf923fd7d3f97f}{operator*}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a06bff49b3a59c851c7c423a4fc0e144c}{pointer}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1ba848f8be6f40c57d2b400db80b6662}{operator-\/>}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \&\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a905cf2af9adc81b489ad49cd91a80d7e}{operator++}}();}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a905cf2af9adc81b489ad49cd91a80d7e}{operator++}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a4466f57c278465f95b0d6700558f7378}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a9d6b90f36a3859b8eb00847dcc131c96}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ StackArray<NodePtr>\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1f92e5e26462ce7c6ea4a203f29411f2}{stack}}\{100\};\ \textcolor{comment}{//\ Фиксированный\ размер\ стека\ (можно\ увеличить\ при\ необходимости)}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a7aa637e3bf6ebc1187333ebbb731c3b3}{fillStack}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node);}
+\DoxyCodeLine{00210\ \ \ \ \ \};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classRedBlackTree_a0410d05b43f3b143e41c47eecdec1da1}{begin}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ max\_depth\ =\ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}\ >\ 0\ ?\ 2\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(log2(\mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}\ +\ 1))\ +\ 5\ :\ 10;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}(\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}},\ max\_depth);}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classRedBlackTree_a6e5578ec4bda17bebe8cef059a280fef}{end}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}();}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a5f566a8e0c9ca4c7e0043de51b734650}{search}}(\textcolor{keyword}{const}\ T\ \&k)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a47eca7e045ef2df2426f5d92903cec45}{insert}}(\textcolor{keyword}{const}\ T\ \&key);}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a360eab340c7770d67365e61f439cfc3c}{remove}}(\textcolor{keyword}{const}\ T\ \&key);}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{output}}(std::ostream\ \&os\ =\ std::cout)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{output}}(os,\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}});}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ os\ <<\ std::endl;}
+\DoxyCodeLine{00282\ \ \ \ \ \}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00288\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRedBlackTree_ab1f4e3a08dc4d21c53e9618098c60ffa}{getNumberOfNodes}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}};}
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classRedBlackTree_ac5338e5c2cb2a691f9307908d086cb66}{getHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a5b301a72b6662a2228a9bf0e768e2c68}{inorderWalkIterative}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a7fa57b00b7655832baa1f6d40f1b15ec}{walkByLevels}}(std::ostream\ \&os\ =\ std::cout)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};\ }
+\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};\ }
+\DoxyCodeLine{00353\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}\ =\ 0;\ }
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00382\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a4a3a312bf54936245f057db5de890dee}{getUncle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \&node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00411\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot);}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot);}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a92e6b5d5bac58cd7d3b2a68f49d5f2c4}{fixInsert}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot);}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00471\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_ae8207af2dc249626332244a66cdc753f}{searchNode}}(\textcolor{keyword}{const}\ T\ \&k)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00486\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{replaceSubtree}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ oldNode,\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ newNode);}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00497\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a556af0e91047148e873f5ee537dce386}{minimum}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ subtreeRoot);}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a29d940f4c40e036149782be7fd06620b}{fixDelete}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot);}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{output}}(std::ostream\ \&out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \&node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00566\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a3eedf9212db1a77ba119de91917996f2}{inorderWalk}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a000ed34a94ca089286297adc0b73b0c2}{createNIL}}();}
+\DoxyCodeLine{00575\ \};}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00578\ \mbox{\hyperlink{classRedBlackTree_a707784cd92e4004097ab7384d531b487}{RedBlackTree<T,\ T0>::RedBlackTree}}(\mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\&other)\ \textcolor{keyword}{noexcept}:\ root(std::move(other.root)),\ countNodes(other.countNodes)\ \{}
+\DoxyCodeLine{00579\ \ \ \ \ other.root\ =\ NIL;}
+\DoxyCodeLine{00580\ \ \ \ \ other.countNodes\ =\ 0;}
+\DoxyCodeLine{00581\ \}}
+\DoxyCodeLine{00582\ }
+\DoxyCodeLine{00583\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00584\ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree<T,\ T0>}}\ \&\ \mbox{\hyperlink{classRedBlackTree_a6fc77dd8ff902cb52cff6e92c2bfd8d5}{RedBlackTree<T,\ T0>::operator=}}(\mbox{\hyperlink{classRedBlackTree}{RedBlackTree}}\ \&\&other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00585\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ root\ =\ std::move(other.root);}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ countNodes\ =\ other.countNodes;}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ other.root\ =\ NIL;}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ other.countNodes\ =\ 0;}
+\DoxyCodeLine{00590\ \ \ \ \ \}}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00592\ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00595\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_ae0e97d38ea47ab07b2aee50aeedc1054}{RedBlackTree<T,\ T0>::Iterator::Iterator}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ root,\ \textcolor{keywordtype}{size\_t}\ max\_stack\_size):\ stack(max\_stack\_size)\ \{}
+\DoxyCodeLine{00596\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a7aa637e3bf6ebc1187333ebbb731c3b3}{fillStack}}(\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}});}
+\DoxyCodeLine{00598\ \ \ \ \ \}}
+\DoxyCodeLine{00599\ \}}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00601\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00602\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a50e91351d03c78a3938cd32f323ef064}{RedBlackTree<T,\ T0>::Iterator::reference}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_af9e24b33aab58cda65cf923fd7d3f97f}{RedBlackTree<T,\ T0>::Iterator::operator*}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keywordflow}{if}\ (stack.isEmpty())\ \{}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Dereferencing\ end\ iterator"{}});}
+\DoxyCodeLine{00605\ \ \ \ \ \}}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordflow}{return}\ stack.top()-\/>key\_;}
+\DoxyCodeLine{00607\ \}}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00610\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a06bff49b3a59c851c7c423a4fc0e144c}{RedBlackTree<T,\ T0>::Iterator::pointer}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1ba848f8be6f40c57d2b400db80b6662}{RedBlackTree<T,\ T0>::Iterator::operator-\/>}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keywordflow}{if}\ (stack.isEmpty())\ \{}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Dereferencing\ end\ iterator"{}});}
+\DoxyCodeLine{00613\ \ \ \ \ \}}
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keywordflow}{return}\ \&stack.top()-\/>key\_;}
+\DoxyCodeLine{00615\ \}}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00618\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{RedBlackTree<T,\ T0>::Iterator}}\ \&\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a905cf2af9adc81b489ad49cd91a80d7e}{RedBlackTree<T,\ T0>::Iterator::operator++}}()\ \{}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordflow}{if}\ (stack.isEmpty())\ \{}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Incrementing\ end\ iterator"{}});}
+\DoxyCodeLine{00621\ \ \ \ \ \}}
+\DoxyCodeLine{00622\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node\ =\ stack.pop();}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ fillStack(node-\/>right\_);}
+\DoxyCodeLine{00625\ \ \ \ \ \}}
+\DoxyCodeLine{00626\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00627\ \}}
+\DoxyCodeLine{00628\ }
+\DoxyCodeLine{00629\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00630\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{RedBlackTree<T,\ T0>::Iterator}}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a905cf2af9adc81b489ad49cd91a80d7e}{RedBlackTree<T,\ T0>::Iterator::operator++}}(\textcolor{keywordtype}{int})\ \{}
+\DoxyCodeLine{00631\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ tmp\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00632\ \ \ \ \ ++(*this);}
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00634\ \}}
+\DoxyCodeLine{00635\ }
+\DoxyCodeLine{00636\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00637\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a4466f57c278465f95b0d6700558f7378}{RedBlackTree<T,\ T0>::Iterator::operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{comment}{//\ Оба\ итератора\ равны,\ если\ их\ стеки\ пусты\ (end-\/итераторы)}}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{comment}{//\ Или\ если\ их\ верхние\ элементы\ совпадают\ (для\ промежуточных\ состояний)}}
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keywordflow}{return}\ (stack.isEmpty()\ \&\&\ other.\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1f92e5e26462ce7c6ea4a203f29411f2}{stack}}.isEmpty())\ ||}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ (!stack.isEmpty()\ \&\&\ !other.\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1f92e5e26462ce7c6ea4a203f29411f2}{stack}}.isEmpty()\ \&\&\ stack.top()\ ==\ other.\mbox{\hyperlink{classRedBlackTree_1_1Iterator_a1f92e5e26462ce7c6ea4a203f29411f2}{stack}}.top());}
+\DoxyCodeLine{00642\ \}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00645\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a9d6b90f36a3859b8eb00847dcc131c96}{RedBlackTree<T,\ T0>::Iterator::operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator}{Iterator}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
+\DoxyCodeLine{00647\ \}}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00650\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_1_1Iterator_a7aa637e3bf6ebc1187333ebbb731c3b3}{RedBlackTree<T,\ T0>::Iterator::fillStack}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node)\ \{}
+\DoxyCodeLine{00651\ \ \ \ \ \textcolor{keywordflow}{while}\ (node\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ stack.push(node);}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ node\ =\ node-\/>left\_;}
+\DoxyCodeLine{00654\ \ \ \ \ \}}
+\DoxyCodeLine{00655\ \}}
+\DoxyCodeLine{00656\ }
+\DoxyCodeLine{00657\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00658\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a5f566a8e0c9ca4c7e0043de51b734650}{RedBlackTree<T,\ T0>::search}}(\textcolor{keyword}{const}\ T\ \&k)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00659\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_ae8207af2dc249626332244a66cdc753f}{searchNode}}(k)\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00660\ \}}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00663\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a47eca7e045ef2df2426f5d92903cec45}{RedBlackTree<T,\ T0>::insert}}(\textcolor{keyword}{const}\ T\ \&key)\ \{}
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ std::make\_shared<Node>(key,\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}});}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}-\/>left\_\ =\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}-\/>right\_\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}++;}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00669\ \ \ \ \ \}}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ currentNode\ =\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}};}
+\DoxyCodeLine{00672\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ parent\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00674\ \ \ \ \ \textcolor{comment}{//\ Поиск\ места\ для\ вставки}}
+\DoxyCodeLine{00675\ \ \ \ \ \textcolor{keywordflow}{while}\ (currentNode\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ parent\ =\ currentNode;}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ <\ currentNode-\/>key\_)\ \{}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ currentNode\ =\ currentNode-\/>left\_;}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (key\ >\ currentNode-\/>key\_)\ \{}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ currentNode\ =\ currentNode-\/>right\_;}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Ключ\ уже\ существует}}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00684\ \ \ \ \ \}}
+\DoxyCodeLine{00685\ }
+\DoxyCodeLine{00686\ \ \ \ \ \textcolor{comment}{//\ Создание\ нового\ узла}}
+\DoxyCodeLine{00687\ \ \ \ \ \textcolor{keyword}{auto}\ newNode\ =\ std::make\_shared<Node>(key,\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}},\ parent);}
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ <\ parent-\/>key\_)\ \{}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ parent-\/>left\_\ =\ newNode;}
+\DoxyCodeLine{00690\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ parent-\/>right\_\ =\ newNode;}
+\DoxyCodeLine{00692\ \ \ \ \ \}}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{comment}{//\ Балансировка}}
+\DoxyCodeLine{00695\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a92e6b5d5bac58cd7d3b2a68f49d5f2c4}{fixInsert}}(newNode);}
+\DoxyCodeLine{00696\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}++;}
+\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00698\ \}}
+\DoxyCodeLine{00699\ }
+\DoxyCodeLine{00700\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00701\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRedBlackTree_a360eab340c7770d67365e61f439cfc3c}{RedBlackTree<T,\ T0>::remove}}(\textcolor{keyword}{const}\ T\ \&key)\ \{}
+\DoxyCodeLine{00702\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node\ =\ \mbox{\hyperlink{classRedBlackTree_ae8207af2dc249626332244a66cdc753f}{searchNode}}(key);}
+\DoxyCodeLine{00703\ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Узел\ не\ найден}}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00705\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ successor\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00706\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ child\ =\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00707\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4}{Color}}\ originalColor\ =\ node-\/>color\_;}
+\DoxyCodeLine{00708\ }
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{comment}{//\ Определяем\ узел\ для\ удаления\ и\ его\ потомка}}
+\DoxyCodeLine{00710\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>left\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ child\ =\ node-\/>right\_;}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{replaceSubtree}}(node,\ child);}
+\DoxyCodeLine{00713\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node-\/>right\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ child\ =\ node-\/>left\_;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{replaceSubtree}}(node,\ child);}
+\DoxyCodeLine{00716\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ У\ узла\ есть\ оба\ потомка}}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ successor\ =\ \mbox{\hyperlink{classRedBlackTree_a556af0e91047148e873f5ee537dce386}{minimum}}(node-\/>right\_);}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ originalColor\ =\ successor-\/>color\_;}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ child\ =\ successor-\/>right\_;}
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (successor-\/>parent\_.lock()\ !=\ node)\ \{}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{replaceSubtree}}(successor,\ child);}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ successor-\/>right\_\ =\ node-\/>right\_;}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \ \ \ successor-\/>right\_-\/>parent\_\ =\ successor;}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{replaceSubtree}}(node,\ successor);}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ successor-\/>left\_\ =\ node-\/>left\_;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ successor-\/>left\_-\/>parent\_\ =\ successor;}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ successor-\/>color\_\ =\ node-\/>color\_;}
+\DoxyCodeLine{00731\ \ \ \ \ \}}
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ \ \ \ \ \textcolor{comment}{//\ Балансировка,\ если\ удалён\ чёрный\ узел}}
+\DoxyCodeLine{00734\ \ \ \ \ \textcolor{keywordflow}{if}\ (originalColor\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}})\ \{}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a29d940f4c40e036149782be7fd06620b}{fixDelete}}(child);}
+\DoxyCodeLine{00736\ \ \ \ \ \}}
+\DoxyCodeLine{00737\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}-\/-\/;}
+\DoxyCodeLine{00738\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00739\ \}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00742\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classRedBlackTree_ac5338e5c2cb2a691f9307908d086cb66}{RedBlackTree<T,\ T0>::getHeight}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00745\ \ \ \ \ \}}
+\DoxyCodeLine{00746\ \ \ \ \ QueueList<NodePtr>\ queueList;}
+\DoxyCodeLine{00747\ \ \ \ \ queueList.enQueue(\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}});}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ 0;}
+\DoxyCodeLine{00749\ \ \ \ \ \textcolor{keywordflow}{while}\ (!queueList.isEmpty())\ \{}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ levelSize\ =\ queueList.size();}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (levelSize-\/-\/)\ \{}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ current\ =\ queueList.deQueue();}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ queueList.enQueue(current-\/>left\_);}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ queueList.enQueue(current-\/>right\_);}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ ++height;}
+\DoxyCodeLine{00761\ \ \ \ \ \}}
+\DoxyCodeLine{00762\ \ \ \ \ \textcolor{keywordflow}{return}\ height\ -\/\ 1;}
+\DoxyCodeLine{00763\ \}}
+\DoxyCodeLine{00764\ }
+\DoxyCodeLine{00765\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00766\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a5b301a72b6662a2228a9bf0e768e2c68}{RedBlackTree<T,\ T0>::inorderWalkIterative}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00767\ \ \ \ \ StackArray<NodePtr>\ stack(\mbox{\hyperlink{classRedBlackTree_a13c482f6e359b438429e7bcbe3a8c626}{countNodes}}\ +\ 1);}
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00769\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ current\ =\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}};}
+\DoxyCodeLine{00770\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ !stack.isEmpty())\ \{}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ stack.push(current);}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>left\_;}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ current\ =\ stack.pop();}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ std::cout\ <<\ current-\/>key\_\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ current\ =\ current-\/>right\_;}
+\DoxyCodeLine{00778\ \ \ \ \ \}}
+\DoxyCodeLine{00779\ \}}
+\DoxyCodeLine{00780\ }
+\DoxyCodeLine{00781\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00782\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a7fa57b00b7655832baa1f6d40f1b15ec}{RedBlackTree<T,\ T0>::walkByLevels}}(std::ostream\ \&os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00783\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00784\ }
+\DoxyCodeLine{00785\ \ \ \ \ QueueList<NodePtr>\ q;}
+\DoxyCodeLine{00786\ \ \ \ \ q.enQueue(\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}});}
+\DoxyCodeLine{00787\ }
+\DoxyCodeLine{00788\ \ \ \ \ \textcolor{keywordflow}{while}\ (!q.isEmpty())\ \{}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ current\ =\ q.deQueue();}
+\DoxyCodeLine{00790\ }
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ os\ <<\ current-\/>key\_\ <<\ \textcolor{stringliteral}{"{}\ "{}};\ \textcolor{comment}{//\ Вывод\ ключа}}
+\DoxyCodeLine{00792\ }
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ \ \ \ q.enQueue(current-\/>left\_);}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ q.enQueue(current-\/>right\_);}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00799\ \ \ \ \ \}}
+\DoxyCodeLine{00800\ \}}
+\DoxyCodeLine{00801\ }
+\DoxyCodeLine{00802\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00803\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{RedBlackTree<T,\ T0>::NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a4a3a312bf54936245f057db5de890dee}{RedBlackTree<T,\ T0>::getUncle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \&node)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00804\ \ \ \ \ \textcolor{keyword}{auto}\ parent\ =\ node-\/>parent\_.lock();}
+\DoxyCodeLine{00805\ \ \ \ \ \textcolor{keywordflow}{if}\ (!parent)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};\ \textcolor{comment}{//\ Если\ родитель\ не\ существует,\ дядя\ тоже\ не\ существует.}}
+\DoxyCodeLine{00806\ \ \ \ \ \textcolor{keyword}{auto}\ grandparent\ =\ parent-\/>parent\_.lock();}
+\DoxyCodeLine{00807\ \ \ \ \ \textcolor{keywordflow}{if}\ (!grandparent)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordflow}{return}\ (parent\ ==\ grandparent-\/>left\_)\ ?\ grandparent-\/>right\_\ :\ grandparent-\/>left\_;}
+\DoxyCodeLine{00809\ \}}
+\DoxyCodeLine{00810\ }
+\DoxyCodeLine{00811\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00812\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{RedBlackTree<T,\ T0>::rotateLeft}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot)\ \{}
+\DoxyCodeLine{00813\ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ pivot-\/>right\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Проверка\ на\ NIL}}
+\DoxyCodeLine{00814\ \ \ \ \ \textcolor{keyword}{auto}\ child\ =\ pivot-\/>right\_;}
+\DoxyCodeLine{00815\ \ \ \ \ pivot-\/>right\_\ =\ child-\/>left\_;}
+\DoxyCodeLine{00816\ }
+\DoxyCodeLine{00817\ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot-\/>right\_)}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ pivot-\/>right\_-\/>parent\_\ =\ pivot;}
+\DoxyCodeLine{00819\ }
+\DoxyCodeLine{00820\ \ \ \ \ child-\/>parent\_\ =\ pivot-\/>parent\_;}
+\DoxyCodeLine{00821\ }
+\DoxyCodeLine{00822\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ parent\ =\ pivot-\/>parent\_.lock())\ \{}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent-\/>left\_\ ==\ pivot)}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>left\_\ =\ child;}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>right\_\ =\ child;}
+\DoxyCodeLine{00827\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ child;}
+\DoxyCodeLine{00829\ \ \ \ \ \}}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \ \ child-\/>left\_\ =\ pivot;}
+\DoxyCodeLine{00832\ \ \ \ \ pivot-\/>parent\_\ =\ child;}
+\DoxyCodeLine{00833\ \}}
+\DoxyCodeLine{00834\ }
+\DoxyCodeLine{00835\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00836\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{RedBlackTree<T,\ T0>::rotateRight}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot)\ \{}
+\DoxyCodeLine{00837\ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ pivot-\/>left\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Проверка\ на\ NIL}}
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keyword}{auto}\ child\ =\ pivot-\/>left\_;}
+\DoxyCodeLine{00839\ \ \ \ \ pivot-\/>left\_\ =\ child-\/>right\_;}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot-\/>left\_)}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ pivot-\/>left\_-\/>parent\_\ =\ pivot;}
+\DoxyCodeLine{00843\ }
+\DoxyCodeLine{00844\ \ \ \ \ child-\/>parent\_\ =\ pivot-\/>parent\_;}
+\DoxyCodeLine{00845\ }
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ parent\ =\ pivot-\/>parent\_.lock())\ \{}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent-\/>left\_\ ==\ pivot)}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>left\_\ =\ child;}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>right\_\ =\ child;}
+\DoxyCodeLine{00851\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ child;}
+\DoxyCodeLine{00853\ \ \ \ \ \}}
+\DoxyCodeLine{00854\ }
+\DoxyCodeLine{00855\ \ \ \ \ child-\/>right\_\ =\ pivot;}
+\DoxyCodeLine{00856\ \ \ \ \ pivot-\/>parent\_\ =\ child;}
+\DoxyCodeLine{00857\ \}}
+\DoxyCodeLine{00858\ }
+\DoxyCodeLine{00859\ }
+\DoxyCodeLine{00860\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00861\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a92e6b5d5bac58cd7d3b2a68f49d5f2c4}{RedBlackTree<T,\ T0>::fixInsert}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot)\ \{}
+\DoxyCodeLine{00862\ \ \ \ \ \textcolor{keywordflow}{while}\ (pivot\ !=\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ \&\&\ pivot-\/>parent\_.lock()-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}})\ \{}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ parent\ =\ pivot-\/>parent\_.lock();}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ grandparent\ =\ parent-\/>parent\_.lock();}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ uncle\ =\ (parent\ ==\ grandparent-\/>left\_)\ ?\ grandparent-\/>right\_\ :\ grandparent-\/>left\_;}
+\DoxyCodeLine{00866\ }
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uncle-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}})\ \{}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 1:\ дядя\ красный.}}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ uncle-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ grandparent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ pivot\ =\ grandparent;}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent\ ==\ grandparent-\/>left\_)\ \{}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 2:\ pivot\ —\ правый\ потомок.}}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot\ ==\ parent-\/>right\_)\ \{}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pivot\ =\ parent;}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(pivot);}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent\ =\ pivot-\/>parent\_.lock();\ \textcolor{comment}{//\ Обновляем\ parent\ после\ поворота}}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 3:\ pivot\ —\ левый\ потомок.}}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grandparent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(grandparent);}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Зеркальные\ случаи\ для\ правого\ поддерева.}}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pivot\ ==\ parent-\/>left\_)\ \{}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pivot\ =\ parent;}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(pivot);}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent\ =\ pivot-\/>parent\_.lock();\ \textcolor{comment}{//\ Обновляем\ parent}}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grandparent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(grandparent);}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00897\ \ \ \ \ \}}
+\DoxyCodeLine{00898\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00899\ \}}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ }
+\DoxyCodeLine{00902\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00903\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{RedBlackTree<T,\ T0>::NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_ae8207af2dc249626332244a66cdc753f}{RedBlackTree<T,\ T0>::searchNode}}(\textcolor{keyword}{const}\ T\ \&k)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00904\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00905\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ current\ =\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}};}
+\DoxyCodeLine{00906\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>key\_\ ==\ k)\ \textcolor{keywordflow}{return}\ current;}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ current\ =\ (current-\/>key\_\ >\ k)\ ?\ current-\/>left\_\ :\ current-\/>right\_;}
+\DoxyCodeLine{00909\ \ \ \ \ \}}
+\DoxyCodeLine{00910\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00911\ \}}
+\DoxyCodeLine{00912\ }
+\DoxyCodeLine{00913\ }
+\DoxyCodeLine{00914\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00915\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_af1f48166687b1c2f2f43618a42191777}{RedBlackTree<T,\ T0>::replaceSubtree}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ oldNode,\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ newNode)\ \{}
+\DoxyCodeLine{00916\ \ \ \ \ \textcolor{keywordflow}{if}\ (oldNode\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00917\ }
+\DoxyCodeLine{00918\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ parent\ =\ oldNode-\/>parent\_.lock())\ \{}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oldNode\ ==\ parent-\/>left\_)\ \{}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>left\_\ =\ newNode;}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>right\_\ =\ newNode;}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00924\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ =\ newNode;}
+\DoxyCodeLine{00926\ \ \ \ \ \}}
+\DoxyCodeLine{00927\ }
+\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keywordflow}{if}\ (newNode\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ newNode-\/>parent\_\ =\ oldNode-\/>parent\_;}
+\DoxyCodeLine{00930\ \ \ \ \ \}}
+\DoxyCodeLine{00931\ \}}
+\DoxyCodeLine{00932\ }
+\DoxyCodeLine{00933\ }
+\DoxyCodeLine{00934\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00935\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{RedBlackTree<T,\ T0>::NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a556af0e91047148e873f5ee537dce386}{RedBlackTree<T,\ T0>::minimum}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ subtreeRoot)\ \{}
+\DoxyCodeLine{00936\ \ \ \ \ \textcolor{keywordflow}{if}\ (subtreeRoot\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}};}
+\DoxyCodeLine{00937\ \ \ \ \ \textcolor{keywordflow}{while}\ (subtreeRoot-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ subtreeRoot\ =\ subtreeRoot-\/>left\_;}
+\DoxyCodeLine{00939\ \ \ \ \ \}}
+\DoxyCodeLine{00940\ \ \ \ \ \textcolor{keywordflow}{return}\ subtreeRoot;}
+\DoxyCodeLine{00941\ \}}
+\DoxyCodeLine{00942\ }
+\DoxyCodeLine{00943\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{00944\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a29d940f4c40e036149782be7fd06620b}{RedBlackTree<T,\ T0>::fixDelete}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ pivot)\ \{}
+\DoxyCodeLine{00945\ \ \ \ \ \textcolor{keywordflow}{while}\ (pivot\ !=\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}}\ \&\&\ pivot-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}})\ \{}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ parent\ =\ pivot-\/>parent\_.lock();}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!parent)\ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ Защита\ от\ nullptr}}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLeftChild\ =\ (pivot\ ==\ parent-\/>left\_);}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ sibling\ =\ isLeftChild\ ?\ parent-\/>right\_\ :\ parent-\/>left\_;}
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 1:\ Брат\ красный\ -\/>\ преобразуем\ в\ случаи\ 2-\/4}}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ \&\&\ sibling-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}})\ \{}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLeftChild)\ \{}
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(parent);}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling\ =\ parent-\/>right\_;\ \textcolor{comment}{//\ Обновляем\ брата\ после\ поворота}}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(parent);}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling\ =\ parent-\/>left\_;}
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00964\ }
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 2:\ Брат\ чёрный,\ оба\ потомка\ чёрные}}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((sibling-\/>left\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ sibling-\/>left\_-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}})\ \&\&}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \ \ \ \ (sibling-\/>right\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ sibling-\/>right\_-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}}))\ \{}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ pivot\ =\ parent;\ \textcolor{comment}{//\ Поднимаем\ проблему\ вверх}}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 3:\ Брат\ чёрный,\ ближний\ потомок\ красный}}
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLeftChild\ \&\&\ (sibling-\/>right\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ sibling-\/>right\_-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}}))\ \{}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>left\_-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(sibling);}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling\ =\ parent-\/>right\_;}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!isLeftChild\ \&\&\ (sibling-\/>left\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ sibling-\/>left\_-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}}))\ \{}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>right\_-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}};}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(sibling);}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling\ =\ parent-\/>left\_;}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00989\ }
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Случай\ 4:\ Брат\ чёрный,\ дальний\ потомок\ красный}}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>color\_\ =\ parent-\/>color\_;}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLeftChild)\ \{}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>right\_-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a06ec1cce0d7a474695e80b3a085c3257}{rotateLeft}}(parent);}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sibling-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sibling-\/>left\_-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_afb1e11c0b2c7731276a7197792c7c4dc}{rotateRight}}(parent);}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ pivot\ =\ \mbox{\hyperlink{classRedBlackTree_a4d6de8ae7de9994b855cdbf1fe452042}{root}};\ \textcolor{comment}{//\ Выход\ из\ цикла}}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01006\ \ \ \ \ \}}
+\DoxyCodeLine{01007\ \ \ \ \ pivot-\/>color\_\ =\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}};\ \textcolor{comment}{//\ Корень\ всегда\ чёрный}}
+\DoxyCodeLine{01008\ \}}
+\DoxyCodeLine{01009\ }
+\DoxyCodeLine{01010\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{01011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{RedBlackTree<T,\ T0>::output}}(std::ostream\ \&out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ \&node)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01012\ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01013\ }
+\DoxyCodeLine{01014\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{01015\ \ \ \ \ out\ <<\ (node-\/>color\_\ ==\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4aa2d9547b5d3dd9f05984475f7c926da0}{Color::RED}}\ ?\ \textcolor{stringliteral}{"{}R:"{}}\ :\ \textcolor{stringliteral}{"{}B:"{}})\ <<\ node-\/>key\_;}
+\DoxyCodeLine{01016\ }
+\DoxyCodeLine{01017\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>left\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}}\ ||\ node-\/>right\_\ !=\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \{}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{output}}(out,\ node-\/>left\_);}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a59df169a5873799d75ac4ecb900b34e1}{output}}(out,\ node-\/>right\_);}
+\DoxyCodeLine{01020\ \ \ \ \ \}}
+\DoxyCodeLine{01021\ }
+\DoxyCodeLine{01022\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{01023\ \}}
+\DoxyCodeLine{01024\ }
+\DoxyCodeLine{01025\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{01026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRedBlackTree_a3eedf9212db1a77ba119de91917996f2}{RedBlackTree<T,\ T0>::inorderWalk}}(\mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{NodePtr}}\ node)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01027\ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \mbox{\hyperlink{classRedBlackTree_a112194cbff817539b051ac719790fdb9}{NIL}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01028\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a3eedf9212db1a77ba119de91917996f2}{inorderWalk}}(node-\/>left\_);}
+\DoxyCodeLine{01029\ \ \ \ \ std::cout\ <<\ node-\/>key\_\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{01030\ \ \ \ \ \mbox{\hyperlink{classRedBlackTree_a3eedf9212db1a77ba119de91917996f2}{inorderWalk}}(node-\/>right\_);}
+\DoxyCodeLine{01031\ \}}
+\DoxyCodeLine{01032\ }
+\DoxyCodeLine{01033\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{01034\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{RedBlackTree<T,\ T0>::NodePtr}}\ \mbox{\hyperlink{classRedBlackTree_a000ed34a94ca089286297adc0b73b0c2}{RedBlackTree<T,\ T0>::createNIL}}()\ \{}
+\DoxyCodeLine{01035\ \ \ \ \ \textcolor{keyword}{auto}\ nil\ =\ std::make\_shared<Node>(T\{\},\ \mbox{\hyperlink{classRedBlackTree_a20b143ffae63491cad87550c139d4fb4a08d0012388564e95c3b4a7407cf04965}{Color::BLACK}});}
+\DoxyCodeLine{01036\ \ \ \ \ nil-\/>left\_\ =\ nil-\/>right\_\ =\ nil;\ \textcolor{comment}{//\ Ссылки\ на\ себя}}
+\DoxyCodeLine{01037\ \ \ \ \ nil-\/>parent\_\ =\ \mbox{\hyperlink{classRedBlackTree_a38c46820ca1c7aa2c773f959337d5b89}{WeakNodePtr}}\{\};\ \textcolor{comment}{//\ Пустой\ родитель}}
+\DoxyCodeLine{01038\ \ \ \ \ \textcolor{keywordflow}{return}\ nil;}
+\DoxyCodeLine{01039\ \}}
+\DoxyCodeLine{01040\ }
+\DoxyCodeLine{01041\ \textcolor{comment}{//\ Инициализация\ статического\ члена\ NIL}}
+\DoxyCodeLine{01042\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ T0>}
+\DoxyCodeLine{01043\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{classRedBlackTree_a7c1c72e27b042eecc89d942d4a7c5ac9}{RedBlackTree<T,\ T0>::NodePtr}}\ \mbox{\hyperlink{classRedBlackTree}{RedBlackTree<T,\ T0>::NIL}}\ =\ \mbox{\hyperlink{classRedBlackTree_a000ed34a94ca089286297adc0b73b0c2}{createNIL}}();}
+\DoxyCodeLine{01044\ }
+\DoxyCodeLine{01045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//REDBLACKTREE\_HPP}}
+
+\end{DoxyCode}

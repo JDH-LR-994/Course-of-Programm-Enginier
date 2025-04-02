@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/MyRepositories/Course-of-Programm-Enginier/1$ Курс
 
 build cmake_object_order_depends_target__2_1___: phony || .
 
-build CMakeFiles/_2_1___.dir/StackTestDrive.cpp.obj: CXX_COMPILER___2_1____unscanned_Debug C$:/MyRepositories/Course-of-Programm-Enginier/1$ Курс/2$ семестр/АиСД/Домашка$ 2.1$ (Стэк)/StackTestDrive.cpp || cmake_object_order_depends_target__2_1___
-  DEP_FILE = CMakeFiles\_2_1___.dir\StackTestDrive.cpp.obj.d
+build CMakeFiles/_2_1___.dir/main.cpp.obj: CXX_COMPILER___2_1____unscanned_Debug C$:/MyRepositories/Course-of-Programm-Enginier/1$ Курс/2$ семестр/АиСД/Домашка$ 2.1$ (Стэк)/main.cpp || cmake_object_order_depends_target__2_1___
+  DEP_FILE = CMakeFiles\_2_1___.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -I"C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/."
   OBJECT_DIR = CMakeFiles\_2_1___.dir
@@ -64,7 +64,7 @@ build CMakeFiles/_2_1___.dir/StackTestDrive.cpp.obj: CXX_COMPILER___2_1____unsca
 #############################################
 # Link the executable _2_1___.exe
 
-build _2_1___.exe: CXX_EXECUTABLE_LINKER___2_1____Debug CMakeFiles/_2_1___.dir/StackTestDrive.cpp.obj
+build _2_1___.exe: CXX_EXECUTABLE_LINKER___2_1____Debug CMakeFiles/_2_1___.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\_2_1___.dir
