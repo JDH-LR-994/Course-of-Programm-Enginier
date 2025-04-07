@@ -1,7 +1,3 @@
-/*
-** semdemo.cpp -- demonstrates semaphore use like a file locking mechanism
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,112 +6,91 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
-#define MAX_RETRIES 10
+#define MAX_RETRIES 10  // Максимальное число попыток ожидания инициализации
 
+// Объединение для semctl()
 union semun {
-	int val;
-	struct semid_ds *buf;
-	ushort *array;
+    int val;               // Значение для SETVAL
+    struct semid_ds *buf;  // Буфер для IPC_STAT, IPC_SET
+    ushort *array;         // Массив для GETALL, SETALL
 };
 
+// Инициализация семафора
+int initsem(key_t key, int nsems) {
+    int semid;
+    union semun arg;
+    struct sembuf sb = {0, 1, 0};  // Операция освобождения (sem_op = 1)
 
-int initsem(key_t key, int nsems)  /* key from ftok() */
-{
-	int i;
-	union semun arg;
-	struct semid_ds buf;
-	struct sembuf sb;
-	int semid;
+    // Пытаемся создать новый семафор
+    semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | 0666);
 
-	semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | 0666);
+    if (semid >= 0) {  // Семафор создан
+        arg.val = 1;   // Инициализируем значением 1 (доступен)
+        printf("Семафор создан. Нажмите Enter для инициализации.\n");
+        getchar();
 
-	if (semid >= 0) { /* we got it first */
-		sb.sem_op = 1; sb.sem_flg = 0;
-		arg.val = 1;
+        // Освобождаем семафоры (устанавливаем sem_otime)
+        for (sb.sem_num = 0; sb.sem_num < nsems; sb.sem_num++) {
+            if (semop(semid, &sb, 1) == -1) {
+                perror("semop");
+                semctl(semid, 0, IPC_RMID);  // Удаляем при ошибке
+                return -1;
+            }
+        }
+    } 
+    else if (errno == EEXIST) {  // Семафор уже существует
+        semid = semget(key, nsems, 0);  // Получаем ID существующего
+        if (semid < 0) return -1;
 
-		printf("press Enter\n"); getchar();
-
-		for(sb.sem_num = 0; sb.sem_num < nsems; sb.sem_num++) { 
-			/* do a semop() to "free" the semaphores. */
-			/* this sets the sem_otime field, as needed below. */
-			if (semop(semid, &sb, 1) == -1) {
-				int e = errno;
-				semctl(semid, 0, IPC_RMID); /* clean up */
-				errno = e;
-				return -1; /* error, check errno */
-			}
-		}
-
-	} else if (errno == EEXIST) { /* someone else got it first */
-		int ready = 0;
-
-		semid = semget(key, nsems, 0); /* get the id */
-		if (semid < 0) return semid; /* error, check errno */
-
-		/* wait for other process to initialize the semaphore: */
-		arg.buf = &buf;
-		for(i = 0; i < MAX_RETRIES && !ready; i++) {
-			semctl(semid, nsems-1, IPC_STAT, arg);
-			if (arg.buf->sem_otime != 0) {
-				ready = 1;
-			} else {
-				sleep(1);
-			}
-		}
-		if (!ready) {
-			errno = ETIME;
-			return -1;
-		}
-	} else {
-		return semid; /* error, check errno */
-	}
-
-	return semid;
+        // Ждём инициализации другим процессом (проверяем sem_otime)
+        struct semid_ds buf;
+        arg.buf = &buf;
+        for (int i = 0; i < MAX_RETRIES; i++) {
+            semctl(semid, nsems-1, IPC_STAT, arg);
+            if (arg.buf->sem_otime != 0) break;  // Готов
+            sleep(1);
+        }
+    } 
+    else {
+        return -1;  // Ошибка
+    }
+    return semid;
 }
 
+int main() {
+    key_t key = ftok(".", 'J');  // Генерируем ключ
+    if (key == -1) {
+        perror("ftok");
+        exit(1);
+    }
 
-int main(void)
-{
-	key_t key;
-	int semid;
-	char u_char = 'J';
-	struct sembuf sb;
-	
-	sb.sem_num = 0;
-	sb.sem_op = -1;  /* set to allocate resource */
-	sb.sem_flg = SEM_UNDO;
+    int semid = initsem(key, 1);  // Инициализируем семафор
+    if (semid == -1) {
+        perror("initsem");
+        exit(1);
+    }
 
-	if ((key = ftok(".", u_char)) == -1) {
-		perror("ftok");
-		exit(1);
-	}
+    struct sembuf sb = {0, -1, SEM_UNDO};  // Захват (sem_op = -1)
 
-	/* grab the semaphore set created by initsem: */
-	if ((semid = initsem(key, 1)) == -1) {
-		perror("initsem");
-		exit(1);
-	}
+    // Захватываем семафор
+    printf("Нажмите Enter для захвата семафора...\n");
+    getchar();
+    printf("Попытка захвата...\n");
+    if (semop(semid, &sb, 1) == -1) {
+        perror("semop");
+        exit(1);
+    }
+    printf("Семафор захвачен!\n");
 
-	printf("Press Enter to lock: ");
-	getchar();
-	printf("Trying to lock...\n");
+    // Освобождаем семафор
+    printf("Нажмите Enter для освобождения...\n");
+    getchar();
+    sb.sem_op = 1;  // Освобождение (sem_op = +1)
+    if (semop(semid, &sb, 1) == -1) {
+        perror("semop");
+        exit(1);
+    }
+    printf("Семафор освобождён.\n");
 
-	if (semop(semid, &sb, 1) == -1) {
-		perror("semop");
-		exit(1);
-	}
-
-	printf("Locked.\n");
-	printf("Press Enter to unlock: ");
-	getchar();
-
-	sb.sem_op = 1; /* free resource */
-	if (semop(semid, &sb, 1) == -1) {
-		perror("semop");
-		exit(1);
-	}
-
-	printf("Unlocked\n");
-
-	return 0;
+    return 0;
 }

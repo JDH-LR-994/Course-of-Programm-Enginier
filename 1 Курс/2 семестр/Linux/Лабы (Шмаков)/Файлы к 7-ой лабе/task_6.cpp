@@ -1,3 +1,8 @@
+/*
+** task_6.cpp - программа для мониторинга количества процессов, ожидающих семафор
+** Основная функция: проверка, сколько процессов заблокировано в ожидании семафора
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -5,33 +10,45 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
-int main(void)
-{
-  printf("Enter 'q' to exit\n");
-  while (getchar()!= 'q'){
-    key_t key;
-    int semid;
-    int count;
+int main(void) {
+    printf("Введите 'q' для выхода\n");
     
-    if ((key = ftok(".", 'J')) == -1){
-      perror("ftok");
-      exit(1);
-    }
-    
-     if ((semid = semget(key, 1, 0)) == -1){
-      perror("semget");
-      exit(1);
-    }
-    
-     if ((count = semctl(semid, 0, GETNCNT)) == -1){
-      perror("semctl");
-      exit(1);
-    }
-    
-    printf("Semafores in waiting state: %d\n", count);
-    printf("Enter 'q' to exit\n");
-  }
-  
-  return 0;
-}
+    // Основной цикл программы
+    while (getchar() != 'q') { // Работаем до ввода 'q'
+        key_t key;    // Ключ для доступа к семафору
+        int semid;    // ID семафора
+        int count;    // Количество ожидающих процессов
 
+        // 1. Генерация ключа (должен совпадать с ключом в semdemo.cpp)
+        if ((key = ftok(".", 'J')) == -1) {  // '.' - текущий каталог, 'J' - идентификатор
+            perror("Ошибка ftok");
+            exit(1);
+        }
+        
+        // 2. Получение ID существующего семафора
+        // Аргументы:
+        //   key - ключ, созданный ftok()
+        //   1   - количество семафоров в наборе
+        //   0   - флаги (не создаем новый, только получаем существующий)
+        if ((semid = semget(key, 1, 0)) == -1) {
+            perror("Ошибка semget");
+            exit(1);
+        }
+        
+        // 3. Получение количества ожидающих процессов
+        // Аргументы:
+        //   semid - ID семафора
+        //   0     - номер семафора в наборе
+        //   GETNCNT - команда получения счетчика ожидающих процессов
+        if ((count = semctl(semid, 0, GETNCNT)) == -1) {
+            perror("Ошибка semctl");
+            exit(1);
+        }
+        
+        // 4. Вывод результата
+        printf("Процессов, ожидающих семафор: %d\n", count);
+        printf("Введите 'q' для выхода\n");
+    }
+    
+    return 0;
+}
