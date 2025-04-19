@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\MyRepositories\Course-of-Programm-Enginier\1 Курс\2 семестр\АиСД\untitled Select CMakeLists.txt

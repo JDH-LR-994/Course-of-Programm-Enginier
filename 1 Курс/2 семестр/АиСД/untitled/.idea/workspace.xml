@@ -27,60 +27,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe5cd556-02af-421f-811f-97a0616d61b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../1 семестр/Linux/Лабы (Шмаков)/Файлы для 6 лабы/.idea/Файлы для 6 лабы.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Домашка 2.2 (Очередь)/QueueList.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Домашка 2.2 (Очередь)/Test.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Домашка 3 (BST)/RedBlackTree.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ТП (Практика)/.idea/ТП (Практика).iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ТП (Практика)/TaskForTeacher1.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ТП (Практика)/TaskForTeacher2.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ТП (Практика)/cmake-build-debug/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/JDH/LR/CarOwner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/MyCollection/HashSetAndTreeSet/MyMoreRealHashSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/MyCollection/Map/MyHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/MyCollection/Map/MyMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/test/java/MyMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 семестр/Linux/Лабы (Шмаков)/Файлы для 6 лабы/signal_alarm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 семестр/Linux/Лабы (Шмаков)/Файлы для 6 лабы/signal_alarm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Linux/Лабы (Шмаков)/Лабы_Лиходиевский_Андрей.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Linux/Лабы (Шмаков)/Лабы_Лиходиевский_Андрей.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/MySharedPtr.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/MySharedPtr.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.cmake/api/v1/reply/cache-v2-75429fdec90d8ade66a3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-30645c8a9b74a92925bf.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-73a26b3bd82f6cd99046.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-15T13-41-31-0775.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.cmake/api/v1/reply/target-Cpp-Debug-818b70e38931666f3b38.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/Cpp.dir/main.cpp.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Smart-ptr (из практики)/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/StackTestDrive.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/TaskFunc.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/TaskFunc.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/Test.h" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/Test.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-44de34d859c5ce9a91d3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-18T11-39-07-0074.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.cmake/api/v1/reply/target-_2_1___-Debug-033ef85dedb6ae05bfe6.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/_2_1___.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/_2_1___.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 2.1 (Стэк)/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/JDH/LR/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Бонусы!!/Java/Реализация основных коллекций/src/main/java/JDH/LR/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,13 +78,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -147,6 +89,7 @@
       <workItem from="1743242716418" duration="785000" />
       <workItem from="1743246392188" duration="1000" />
       <workItem from="1743412120893" duration="37000" />
+      <workItem from="1744133784203" duration="61000" />
     </task>
     <servers />
   </component>

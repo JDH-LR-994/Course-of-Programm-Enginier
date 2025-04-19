@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "___3__",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "___3__::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-___3__-Debug-3c1bcf679a9e458b7126.json",
+					"name" : "___3__",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/MyRepositories/Course-of-Programm-Enginier/1 \u041a\u0443\u0440\u0441/2 \u0441\u0435\u043c\u0435\u0441\u0442\u0440/\u0410\u0438\u0421\u0414/\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430 (3 \u0432\u0430\u0440\u0438\u0430\u043d\u0442)/cmake-build-debug",
+		"source" : "C:/MyRepositories/Course-of-Programm-Enginier/1 \u041a\u0443\u0440\u0441/2 \u0441\u0435\u043c\u0435\u0441\u0442\u0440/\u0410\u0438\u0421\u0414/\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430 (3 \u0432\u0430\u0440\u0438\u0430\u043d\u0442)"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
