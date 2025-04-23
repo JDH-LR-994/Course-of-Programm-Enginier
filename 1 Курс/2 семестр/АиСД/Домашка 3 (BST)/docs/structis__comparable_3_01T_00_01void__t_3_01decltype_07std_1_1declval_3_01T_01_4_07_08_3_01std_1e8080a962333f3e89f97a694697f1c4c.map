@@ -1,5 +1,0 @@
-<map id="is_comparable&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;()&lt; std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;() &gt; std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;()==std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;() !=std::declval&lt; T &gt;()) &gt; &gt;" name="is_comparable&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;()&lt; std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;() &gt; std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;()==std::declval&lt; T &gt;()), decltype(std::declval&lt; T &gt;() !=std::declval&lt; T &gt;()) &gt; &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,267,221"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="80,5,192,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,44,139,78,133,78,133,44"/>
-</map>
