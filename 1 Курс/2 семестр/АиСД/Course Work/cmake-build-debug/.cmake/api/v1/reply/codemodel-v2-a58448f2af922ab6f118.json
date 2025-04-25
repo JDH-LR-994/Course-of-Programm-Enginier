@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Course_Work",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Course_Work::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Course_Work-Debug-03ca5a189087c550d15c.json",
+					"name" : "Course_Work",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/MyRepositories/Course-of-Programm-Enginier/1 \u041a\u0443\u0440\u0441/2 \u0441\u0435\u043c\u0435\u0441\u0442\u0440/\u0410\u0438\u0421\u0414/Course Work/cmake-build-debug",
+		"source" : "C:/MyRepositories/Course-of-Programm-Enginier/1 \u041a\u0443\u0440\u0441/2 \u0441\u0435\u043c\u0435\u0441\u0442\u0440/\u0410\u0438\u0421\u0414/Course Work"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

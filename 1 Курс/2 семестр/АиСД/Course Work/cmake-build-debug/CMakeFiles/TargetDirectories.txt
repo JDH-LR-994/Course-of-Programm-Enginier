@@ -1,0 +1,3 @@
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/Course_Work.dir
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/rebuild_cache.dir
