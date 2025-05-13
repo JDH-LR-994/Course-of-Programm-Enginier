@@ -4,62 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2619ef0a-226c-4600-bf8a-772a14c71e78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/tests.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Практикум Программирования 1/HashTable.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Практикум Программирования 1/HashTable.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup2.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup3.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Task/task1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Listing/lissajous.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Tasks/task1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Tasks/task2.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section5/Listing/fetch.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/randomTask.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/RedBlackTree.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/RedBlackTree.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/StackArray.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/StackArray.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/.cmake/api/v1/reply/cache-v2-f97947f65e9071b21b2c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-36bc4c2a5e03421b0354.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-a58448f2af922ab6f118.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/.cmake/api/v1/reply/index-2025-04-25T10-02-46-0422.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/.cmake/api/v1/reply/target-Course_Work-Debug-03ca5a189087c550d15c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-24T09-40-04-0457.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-214ae543a7349ee9f068.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/index-2025-04-19T16-47-20-0561.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/target-___3__-Debug-3c1bcf679a9e458b7126.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/___3__.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/___3__.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2619ef0a-226c-4600-bf8a-772a14c71e78" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

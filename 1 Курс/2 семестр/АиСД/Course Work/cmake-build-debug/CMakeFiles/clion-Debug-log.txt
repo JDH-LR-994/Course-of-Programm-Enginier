@@ -1,4 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S "C:\MyRepositories\Course-of-Programm-Enginier\1 Курс\2 семестр\АиСД\Course Work" -B "C:\MyRepositories\Course-of-Programm-Enginier\1 Курс\2 семестр\АиСД\Course Work\cmake-build-debug"
 -- Configuring done (0.2s)
--- Generating done (0.2s)
+-- Generating done (0.0s)
 -- Build files have been written to: C:/MyRepositories/Course-of-Programm-Enginier/1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug
