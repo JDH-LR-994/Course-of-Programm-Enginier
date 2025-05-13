@@ -1,16 +1,14 @@
-#include "BinarySearchTree.hpp"
+#include "tests.hpp"
 
 int main() {
-    BSTree tree;
-    tree.insert(10);
-    tree.insert(5);
-    tree.insert(20);
-    tree.insert(30);
-    tree.insert(40);
-    tree.insert(36);
-    tree.insert(60);
-    tree.output();
-    std::cout << std::endl;
-    tree.eraseAllList();
-    tree.output();
+    testEmptyTree();
+    testSingleNodeTree();
+    testTreeWithLeaves();
+    testComplexTree();
+    testMoveSemantics();
+    testInsertDuplicate();
+    testMultipleEraseOperations();
+
+    std::cout << "All tests passed successfully!" << std::endl;
+    return 0;
 }

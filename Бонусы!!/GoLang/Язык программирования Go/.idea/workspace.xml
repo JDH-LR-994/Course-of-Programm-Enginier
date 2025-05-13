@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2619ef0a-226c-4600-bf8a-772a14c71e78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/.idea/editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/echo1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/helloworld.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/tests.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Практикум Программирования 1/HashTable.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Практикум Программирования 1/HashTable.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup2.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Listings/dup3.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/Task/task1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Listing/lissajous.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Tasks/task1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Tasks/task2.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section5/Listing/fetch.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Programming Language Go/randomTask.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/RedBlackTree.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/RedBlackTree.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/StackArray.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/StackArray.hpp" afterDir="false" />
@@ -30,7 +36,29 @@
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Course Work/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-24T09-40-04-0457.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 2.1 (Стэк)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Домашка 3 (BST)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/BinarySearchTree.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-214ae543a7349ee9f068.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/index-2025-04-19T16-47-20-0561.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.cmake/api/v1/reply/target-___3__-Debug-3c1bcf679a9e458b7126.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/___3__.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/___3__.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/___3__.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1 Курс/2 семестр/АиСД/Контрольная работа (3 вариант)/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +76,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2wMvnQx2FbBF7DxCIXznusTxPUz" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -66,8 +94,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultGoTemplateProperty": "Go Application",
+    "Go Build.go build Programming_Language_Go.executor": "Run",
     "Go Build.go build Programming_Language_Go/Chapter 1.executor": "Run",
     "Go Build.go build Programming_Language_Go/Chapter1.executor": "Run",
+    "Go Build.go build Programming_Language_Go/Chapter1/Section3.executor": "Run",
+    "Go Build.go build Programming_Language_Go/Chapter1/Section4/Listing.executor": "Run",
     "Go Build.go build Язык_программирования_Go/Chapter 1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -76,7 +107,7 @@
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
-    "last_opened_file_path": "C:/Users/jdh99",
+    "last_opened_file_path": "C:/MyRepositories/Course-of-Programm-Enginier/Бонусы!!/GoLang/Programming Language Go/Chapter1/Section4/Tasks",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -84,6 +115,18 @@
     "run.configurations.included.in.services": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section4\Tasks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section3\Listings" />
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section2\Listings" />
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section1" />
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1" />
+      <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section2" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -96,20 +139,28 @@
           <value>
             <set>
               <option value="go build Programming_Language_Go/Chapter 1" />
-              <option value="go build Язык_программирования_Go/Chapter 1" />
             </set>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build Programming_Language_Go/Chapter1">
+  <component name="RunManager" selected="Go Build.go build Programming_Language_Go">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Programming Language Go" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind />
+      <kind value="FILE" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build Programming_Language_Go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Programming Language Go" />
+      <working_directory value="$PROJECT_DIR$/../Programming Language Go" />
+      <kind value="PACKAGE" />
+      <package value="Programming_Language_Go" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../Programming Language Go/randomTask.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build Programming_Language_Go/Chapter 1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -130,19 +181,28 @@
       <filePath value="$PROJECT_DIR$/../Programming Language Go/Chapter1/helloworld.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build Язык_программирования_Go/Chapter 1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build Programming_Language_Go/Chapter1/Section3" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Programming Language Go" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/../Programming Language Go" />
       <kind value="PACKAGE" />
-      <package value="Язык_программирования_Go/Chapter 1" />
+      <package value="Programming_Language_Go/Chapter1/Section3" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/Chapter 1/helloworld.go" />
+      <filePath value="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section3/dup1.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build Programming_Language_Go/Chapter1/Section4/Listing" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Programming Language Go" />
+      <working_directory value="$PROJECT_DIR$/../Programming Language Go" />
+      <kind value="PACKAGE" />
+      <package value="Programming_Language_Go/Chapter1/Section4/Listing" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../Programming Language Go/Chapter1/Section4/Listing/lissajous.go" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="Programming Language Go" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind />
+      <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
@@ -150,9 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build Programming_Language_Go" />
+        <item itemvalue="Go Build.go build Programming_Language_Go/Chapter1/Section4/Listing" />
+        <item itemvalue="Go Build.go build Programming_Language_Go/Chapter1/Section3" />
         <item itemvalue="Go Build.go build Programming_Language_Go/Chapter1" />
         <item itemvalue="Go Build.go build Programming_Language_Go/Chapter 1" />
-        <item itemvalue="Go Build.go build Язык_программирования_Go/Chapter 1" />
       </list>
     </recent_temporary>
   </component>

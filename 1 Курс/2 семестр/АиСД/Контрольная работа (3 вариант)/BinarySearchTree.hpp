@@ -10,11 +10,12 @@
 #include "StackArray.hpp"
 class BSTree {
 public:
-    BSTree(): root_(nullptr) {
-    }
+    BSTree(): root_(nullptr) {}
     ~BSTree() = default;
+
     BSTree(BSTree &&other) noexcept;
     BSTree &operator=(BSTree &&other) noexcept;
+
     BSTree &operator=(const BSTree &other) = delete;
     BSTree(const BSTree &other) = delete;
 

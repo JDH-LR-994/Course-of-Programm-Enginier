@@ -1,16 +1,4 @@
 # ninja log v6
-35	433	7667831728518337	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-59	510	7667825689158163	CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj	d724c6a8ae0348ab
-434	588	7667831732504403	___3__.exe	60cb299c68e6408e
-19	441	7667856224446882	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-23	482	7667856224485954	CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj	d724c6a8ae0348ab
-482	593	7667856229083517	___3__.exe	60cb299c68e6408e
-37	474	7667856856862521	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-475	570	7667856861242407	___3__.exe	60cb299c68e6408e
-39	490	7667857057252040	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-491	588	7667857061772827	___3__.exe	60cb299c68e6408e
-43	590	7667857132736423	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-591	697	7667857138218743	___3__.exe	60cb299c68e6408e
-41	496	7667867157610225	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
-49	670	7667867157689763	CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj	d724c6a8ae0348ab
-670	834	7667867163909776	___3__.exe	60cb299c68e6408e
+50	549	7688521204777661	CMakeFiles/___3__.dir/main.cpp.obj	aafe8d76e33dd6bf
+54	589	7688521204818782	CMakeFiles/___3__.dir/BinarySearchTree.cpp.obj	d724c6a8ae0348ab
+589	741	7688521210177677	___3__.exe	60cb299c68e6408e

@@ -41,7 +41,7 @@ class StackArray final : public Stack<T> {
     std::size_t capacity_;
 
 public:
-    explicit StackArray<T>(size_t size);
+    explicit StackArray(size_t size);
 
     StackArray(const StackArray &other)
         : data(new T[other.capacity_]),

@@ -3,10 +3,10 @@
 //
 #include "BinarySearchTree.hpp"
 
-inline BSTree::BSTree(BSTree &&other) noexcept: root_(std::move(other.root_)) {
+BSTree::BSTree(BSTree &&other) noexcept: root_(std::move(other.root_)) {
 }
 
-inline BSTree &BSTree::operator=(BSTree &&other) noexcept {
+BSTree &BSTree::operator=(BSTree &&other) noexcept {
     if (this == &other)
         return *this;
     root_ = std::move(other.root_);
@@ -44,9 +44,10 @@ void BSTree::insert(int key) {
 void BSTree::eraseAllList() {
     if (root_ == nullptr) return;
 
-    StackArray<std::shared_ptr<Node>> nodeStack(countNodes(root_) + 1);
-    StackArray<std::shared_ptr<Node>> parentStack(countNodes(root_) + 1);
-    StackArray<bool> isLeftStack(countNodes(root_) + 1);
+    std::size_t count_nodes = countNodes(root_);
+    StackArray<std::shared_ptr<Node>> nodeStack(count_nodes + 1);
+    StackArray<std::shared_ptr<Node>> parentStack(countNodes() + 1);
+    StackArray<bool> isLeftStack(count_nodes + 1);
 
     nodeStack.push_back(root_);
     parentStack.push_back(nullptr);
@@ -78,7 +79,7 @@ void BSTree::eraseAllList() {
         }
     }
 
-    if (root_->left_ == nullptr && root_->right_ == nullptr) {
+    if (root_->left_ == nullptr && root_->right_ == nullptr && count_nodes == 0) {
         root_ = nullptr;
     }
 }
@@ -96,9 +97,13 @@ void BSTree::output(std::ostream &os, const std::shared_ptr<Node> &node) const {
 }
 
 std::size_t BSTree::countNodes(const std::shared_ptr<Node> &node) {
-    if (node == nullptr || (node->left_ == nullptr && node->right_ == nullptr)) return 0;
-    std::size_t count = 1;
-    if (node->left_ != nullptr) count += countNodes(node->left_);
-    if (node->right_ != nullptr) count += countNodes(node->right_);
-    return count;
+    if (node == nullptr)
+        return 0;
+
+    // Если это лист (нет детей), не считаем
+    if (node->left_ == nullptr && node->right_ == nullptr)
+        return 0;
+
+    // Считаем текущий узел + детей
+    return 1 + countNodes(node->left_) + countNodes(node->right_);
 }

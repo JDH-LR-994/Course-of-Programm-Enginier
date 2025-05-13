@@ -7,4 +7,5 @@ add_executable(___3__ main.cpp
         BinarySearchTree.hpp
         BinarySearchTree.cpp
         StackArray.hpp
+        tests.hpp
 )

@@ -79,6 +79,7 @@ class RedBlackTree {
      */
     struct Node {
         T key_; ///< Ключ узла.
+        std::size_t frequency_ = 1;
         Color color_; ///< Цвет узла.
         NodePtr left_; ///< Левый потомок.
         NodePtr right_; ///< Правый потомок.
@@ -565,7 +566,6 @@ private:
      */
     void inorderWalk(NodePtr node) const;
 
-
     /**
      * @brief Создаёт фиктивный лист (NIL) с чёрным цветом и ссылками на себя.
      * @details Этот метод вызывается только один раз при инициализации статического члена NIL.
@@ -661,6 +661,13 @@ bool RedBlackTree<T, T0>::search(const T &k) const {
 
 template<typename T, typename T0>
 bool RedBlackTree<T, T0>::insert(const T &key) {
+
+    NodePtr found = searchNode(key);
+    if (found != NIL) {
+        ++(found->frequency);
+        return true;
+    }
+
     if (root == NIL) {
         root = std::make_shared<Node>(key, Color::BLACK);
         root->left_ = root->right_ = NIL;
