@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2619ef0a-226c-4600-bf8a-772a14c71e78" name="Changes" comment="" />
+    <list default="true" id="2619ef0a-226c-4600-bf8a-772a14c71e78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Programming Language Go/randomTask.go" beforeDir="false" afterPath="$PROJECT_DIR$/../Programming Language Go/randomTask.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,30 +39,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go Application",
-    "Go Build.go build Programming_Language_Go.executor": "Run",
-    "Go Build.go build Programming_Language_Go/Chapter 1.executor": "Run",
-    "Go Build.go build Programming_Language_Go/Chapter1.executor": "Run",
-    "Go Build.go build Programming_Language_Go/Chapter1/Section3.executor": "Run",
-    "Go Build.go build Programming_Language_Go/Chapter1/Section4/Listing.executor": "Run",
-    "Go Build.go build Язык_программирования_Go/Chapter 1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "last_opened_file_path": "C:/MyRepositories/Course-of-Programm-Enginier/Бонусы!!/GoLang/Programming Language Go/Chapter1/Section4/Tasks",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/MyRepositories/Course-of-Programm-Enginier/Бонусы!!/GoLang/Язык программирования Go/main.go",
-    "run.configurations.included.in.services": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go Application&quot;,
+    &quot;Go Build.go build Programming_Language_Go.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build Programming_Language_Go/Chapter 1.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build Programming_Language_Go/Chapter1.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build Programming_Language_Go/Chapter1/Section3.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build Programming_Language_Go/Chapter1/Section4/Listing.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build Язык_программирования_Go/Chapter 1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MyRepositories/Course-of-Programm-Enginier/Бонусы!!/GoLang/Programming Language Go/Chapter1/Section4/Tasks&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/MyRepositories/Course-of-Programm-Enginier/Бонусы!!/GoLang/Язык программирования Go/main.go&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\MyRepositories\Course-of-Programm-Enginier\Бонусы!!\GoLang\Programming Language Go\Chapter1\Section4\Tasks" />

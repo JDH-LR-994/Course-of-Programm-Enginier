@@ -5,8 +5,9 @@
 #include "Vector.hpp"
 #include <string>
 #include <cctype>
+#include "RedBlackTree.hpp"
 
-Vector<std::string> extractWordsFromFile(const std::string& filePath) {
+inline Vector<std::string> extractWordsFromFile(const std::string& filePath) {
     Vector<std::string> words;
     std::ifstream file(filePath);
 
@@ -33,5 +34,11 @@ Vector<std::string> extractWordsFromFile(const std::string& filePath) {
 
     file.close();
     return words;
+}
+
+inline void insertWordsIntoRBTree(RedBlackTree<std::string>& tree, const Vector<std::string>& words) {
+    for (const auto& word : words) {
+        tree.insert(word);
+    }
 }
 #endif //READFUNC_HPP

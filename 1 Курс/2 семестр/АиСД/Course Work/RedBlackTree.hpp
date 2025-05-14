@@ -115,6 +115,7 @@ public:
     RedBlackTree &operator=(RedBlackTree &&other) noexcept ///< Разрешенное перемещающее присваивание.
     ;
 
+    std::size_t get_frequency(T& arg) const;
 
     ~RedBlackTree() = default; ///< Деструктор по умолчанию.
 
@@ -592,6 +593,15 @@ RedBlackTree<T, T0> & RedBlackTree<T, T0>::operator=(RedBlackTree &&other) noexc
 }
 
 template<typename T, typename T0>
+std::size_t RedBlackTree<T, T0>::get_frequency(T &arg) const {
+    auto node = searchNode(arg);
+    if (node != NIL) {
+        return node->frequency_;
+    }
+    return 0;
+}
+
+template<typename T, typename T0>
 RedBlackTree<T, T0>::Iterator::Iterator(NodePtr root, size_t max_stack_size): stack(max_stack_size) {
     if (root != NIL) {
         fillStack(root);
@@ -664,7 +674,7 @@ bool RedBlackTree<T, T0>::insert(const T &key) {
 
     NodePtr found = searchNode(key);
     if (found != NIL) {
-        ++(found->frequency);
+        ++(found->frequency_);
         return true;
     }
 
