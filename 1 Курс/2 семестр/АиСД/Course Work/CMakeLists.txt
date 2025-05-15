@@ -8,4 +8,6 @@ add_executable(Course_Work main.cpp
         QueueList.hpp
         Test.hpp
         Vector.hpp
-        ReadFunc.hpp)
+        ReadFunc.hpp
+        pair.hpp
+)

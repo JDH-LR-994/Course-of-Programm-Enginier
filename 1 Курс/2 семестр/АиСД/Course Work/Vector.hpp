@@ -1,13 +1,13 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
-#include <iostream>
 #include <stdexcept>
+#include <initializer_list>
 
 template<typename T>
 class Vector {
-    T *data_;
-    std::size_t capacity_;
     std::size_t size_;
+    std::size_t capacity_;
+    T *data_;
 
     void resize(std::size_t new_capacity);
 
@@ -23,8 +23,11 @@ public:
         T *operator->() const;
 
         Iterator &operator++();
+        bool operator!=(const Iterator& other) const;
 
         Iterator operator++(int);
+
+        Iterator operator+(int i) const;
     };
 
     class ConstIterator {
@@ -45,7 +48,6 @@ public:
 
         bool operator!=(const ConstIterator& other) const;
 
-        // Для совместимости с STL алгоритмами
         using difference_type = std::ptrdiff_t;
         using value_type = T;
         using pointer = const T*;
@@ -56,6 +58,19 @@ public:
     Vector();
 
     explicit Vector(std::size_t initial_size);
+
+    Vector(std::initializer_list<T> init)
+    : size_(init.size()),
+      capacity_(init.size()),
+      data_(new T[capacity_])
+    {
+        const T* src = init.begin();
+        T* dest = data_;
+
+        for (size_t i = 0; i < size_; ++i) {
+            dest[i] = src[i];
+        }
+    }
 
     ~Vector();
 
@@ -117,10 +132,18 @@ typename Vector<T>::Iterator & Vector<T>::Iterator::operator++() {
 }
 
 template<typename T>
+bool Vector<T>::Iterator::operator!=(const Iterator &other) const { return ptr != other.ptr; }
+
+template<typename T>
 typename Vector<T>::Iterator Vector<T>::Iterator::operator++(int) {
     Iterator tmp = *this;
     ++ptr;
     return tmp;
+}
+
+template<typename T>
+typename Vector<T>::Iterator Vector<T>::Iterator::operator+(int i) const {
+    return Iterator(ptr + i);
 }
 
 template<typename T>

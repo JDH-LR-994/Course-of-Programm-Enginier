@@ -26,6 +26,8 @@
 #include <type_traits>
 #include "StackArray.hpp"
 #include "QueueList.hpp"
+#include "Vector.hpp"
+#include "Pair.hpp"
 
 template<typename...>
 using void_t = void;
@@ -184,6 +186,8 @@ public:
          */
         Iterator &operator++();
 
+        std::size_t getFrequency() const;
+
         /**
          * @brief Постфиксный оператор инкремента для итератора.
          * @return Копия итератора до инкремента.
@@ -218,6 +222,24 @@ public:
 
     Iterator end() const {
         return Iterator();
+    }
+
+
+    Vector<Pair<std::string, int>> getTopKFrequent(std::size_t k) const {
+        Vector<Pair<std::string, int>> elements;
+
+        for (auto it = begin(); it != end(); it++) {
+            elements.push_back(Pair<std::string, int>(*it, it.getFrequency()));
+        }
+        quickSort(elements);
+
+        if (k > elements.get_size()) k = elements.get_size();
+
+        Vector<Pair<std::string, int>> result;
+        for (size_t i = 0; i < k; ++i) {
+            result.push_back(elements[i]);
+        }
+        return result;
     }
 
     /**
@@ -573,6 +595,12 @@ private:
      * @return Указатель shared_ptr на фиктивный лист.
      */
     static NodePtr createNIL();
+
+    static void quickSort(Vector<Pair<std::string, int>>& vec);
+
+    static void quickSortImpl(Vector<Pair<std::string, int>>& vec, int low, int high);
+
+    static int partition(Vector<Pair<std::string, int>>& vec, int low, int high);
 };
 
 template<typename T, typename T0>
@@ -637,6 +665,11 @@ typename RedBlackTree<T, T0>::Iterator &RedBlackTree<T, T0>::Iterator::operator+
 }
 
 template<typename T, typename T0>
+std::size_t RedBlackTree<T, T0>::Iterator::getFrequency() const {
+    return stack.top().get()->frequency_;
+}
+
+template<typename T, typename T0>
 typename RedBlackTree<T, T0>::Iterator RedBlackTree<T, T0>::Iterator::operator++(int) {
     Iterator tmp = *this;
     ++(*this);
@@ -675,7 +708,7 @@ bool RedBlackTree<T, T0>::insert(const T &key) {
     NodePtr found = searchNode(key);
     if (found != NIL) {
         ++(found->frequency_);
-        return true;
+        return false;
     }
 
     if (root == NIL) {
@@ -1053,6 +1086,35 @@ typename RedBlackTree<T, T0>::NodePtr RedBlackTree<T, T0>::createNIL() {
     nil->left_ = nil->right_ = nil; // Ссылки на себя
     nil->parent_ = WeakNodePtr{}; // Пустой родитель
     return nil;
+}
+
+template<typename T, typename T0>
+void RedBlackTree<T, T0>::quickSort(Vector<Pair<std::string, int>> &vec) {
+    if (vec.get_size() <= 1) return;
+    quickSortImpl(vec, 0, vec.get_size() - 1);
+}
+
+template<typename T, typename T0>
+void RedBlackTree<T, T0>::quickSortImpl(Vector<Pair<std::string, int>> &vec, int low, int high) {
+    if (low < high) {
+        int pi = partition(vec, low, high);
+        quickSortImpl(vec, low, pi - 1);
+        quickSortImpl(vec, pi + 1, high);
+    }
+}
+
+template<typename T, typename T0>
+int RedBlackTree<T, T0>::partition(Vector<Pair<std::string, int>> &vec, int low, int high) {
+    int pivot = vec[high].second;
+    int i = low - 1;
+    for (int j = low; j < high; ++j) {
+        if (vec[j].second >= pivot) {
+            ++i;
+            std::swap(vec[i], vec[j]);
+        }
+    }
+    std::swap(vec[i + 1], vec[high]);
+    return i + 1;
 }
 
 // Инициализация статического члена NIL

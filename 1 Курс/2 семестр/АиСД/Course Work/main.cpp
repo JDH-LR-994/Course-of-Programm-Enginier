@@ -8,14 +8,12 @@
 #include "ReadFunc.hpp"
 
 int main() {
-    RedBlackTree<std::string> tree;
     std::string filePath = "example.txt";
+    auto tree = extractWordsFromFile(filePath);
 
-    Vector<std::string> words = extractWordsFromFile(filePath);
+    auto res = tree.getTopKFrequent(3);
 
-    insertWordsIntoRBTree(tree, words);
-
-    for (auto word : tree) {
-        std::cout << word << " " << tree.get_frequency(word) <<  std::endl;
+    for (auto r : res) {
+        std::cout <<r.first << " " << r.second << std::endl;
     }
 }
