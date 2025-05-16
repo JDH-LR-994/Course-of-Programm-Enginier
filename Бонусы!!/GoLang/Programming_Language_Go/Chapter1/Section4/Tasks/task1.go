@@ -40,7 +40,7 @@ func lissajous_(out io.Writer) {
 
 	for i := 0; i < nframes_; i++ {
 		rect := image.Rect(0, 0, 2*size_+1, 2*size_+1)
-		img := image.NewPaletted(rect, palette)
+		img := image.NewPaletted(rect, palette1)
 		for t := 0.0; t < cycles_*2*math.Pi; t += res_ {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
