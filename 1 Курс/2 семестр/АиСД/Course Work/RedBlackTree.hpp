@@ -225,17 +225,17 @@ public:
     }
 
 
-    Vector<Pair<std::string, int>> getTopKFrequent(std::size_t k) const {
-        Vector<Pair<std::string, int>> elements;
+    Vector<Pair<T, int>> getTopKFrequent(std::size_t k) const {
+        Vector<Pair<T, int>> elements;
 
         for (auto it = begin(); it != end(); it++) {
-            elements.push_back(Pair<std::string, int>(*it, it.getFrequency()));
+            elements.push_back(Pair<T, int>(*it, it.getFrequency()));
         }
         quickSort(elements);
 
         if (k > elements.get_size()) k = elements.get_size();
 
-        Vector<Pair<std::string, int>> result;
+        Vector<Pair<T, int>> result;
         for (size_t i = 0; i < k; ++i) {
             result.push_back(elements[i]);
         }
