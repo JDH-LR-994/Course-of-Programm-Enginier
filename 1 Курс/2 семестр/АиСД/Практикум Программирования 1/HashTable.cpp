@@ -8,10 +8,10 @@
 HashTable::Node::Node(const char *k): key(strdup(k)), next(nullptr) {}
 
 HashTable::Node::~Node() {
-    delete[] key;
+    free(key);
 }
 
-HashTable::HashTable(int size): size_(size), table_(new Node*[size_]()) {
+HashTable::HashTable(int size): size_(size), table_(new Node *[size_]()) {
     for (int i = 0; i < size_; ++i) {
         table_[i] = nullptr;
     }
@@ -24,9 +24,9 @@ HashTable::~HashTable() {
 
 void HashTable::clear() {
     for (int i = 0; i < size_; ++i) {
-        Node* current = table_[i];
+        Node *current = table_[i];
         while (current != nullptr) {
-            Node* temp = current;
+            Node *temp = current;
             current = current->next;
             delete temp;
         }
@@ -48,7 +48,7 @@ bool HashTable::insert(const char *key) {
     }
 
     int index = hash(key);
-    Node* newNode = new Node(key);
+    Node *newNode = new Node(key);
 
     newNode->next = table_[index];
     table_[index] = newNode;
@@ -58,8 +58,8 @@ bool HashTable::insert(const char *key) {
 
 bool HashTable::remove(const char *key) {
     int index = hash(key);
-    Node* current = table_[index];
-    Node* prev = nullptr;
+    Node *current = table_[index];
+    Node *prev = nullptr;
 
     while (current != nullptr) {
         if (strcmp(current->key, key) == 0) {
@@ -84,7 +84,7 @@ void HashTable::printChain(int hashValue) const {
     }
 
     std::cout << "Chain for hash " << hashValue << ": ";
-    Node* current = table_[hashValue];
+    Node *current = table_[hashValue];
 
     if (current == nullptr) {
         std::cout << "empty";
@@ -102,7 +102,7 @@ void HashTable::printChain(int hashValue) const {
 
 void HashTable::printAll() const {
     for (int i = 0; i < size_; ++i) {
-        Node* current = table_[i];
+        Node *current = table_[i];
         if (current != nullptr) {
             std::cout << "[" << i << "]: ";
             while (current != nullptr) {
@@ -119,7 +119,7 @@ void HashTable::printAll() const {
 
 bool HashTable::contains(const char *key) const {
     int index = hash(key);
-    Node* current = table_[index];
+    Node *current = table_[index];
 
     while (current != nullptr) {
         if (strcmp(current->key, key) == 0) {

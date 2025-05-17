@@ -5,13 +5,11 @@
 #ifndef HASHTABLE_HPP
 #define HASHTABLE_HPP
 
-
-
 #include <iostream>
 
 class HashTable {
     struct Node {
-        const char* key;
+        char* key;
         Node* next;
         explicit Node(const char* k);
         ~Node();

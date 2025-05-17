@@ -1,7 +1,3 @@
-//
-// Created by jdh99 on 15.05.2025.
-//
-
 #ifndef PAIR_HPP
 #define PAIR_HPP
 

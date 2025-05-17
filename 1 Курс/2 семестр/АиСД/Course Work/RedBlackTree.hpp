@@ -117,7 +117,7 @@ public:
     RedBlackTree &operator=(RedBlackTree &&other) noexcept ///< Разрешенное перемещающее присваивание.
     ;
 
-    std::size_t get_frequency(T& arg) const;
+    std::size_t getFrequency(T& arg) const;
 
     ~RedBlackTree() = default; ///< Деструктор по умолчанию.
 
@@ -297,15 +297,6 @@ public:
     bool remove(const T &key);
 
     /**
-     * @brief Метод выводящий структуру дерева
-     * @param os - поток, в который необходимо вывести структуру дерева
-     */
-    void output(std::ostream &os = std::cout) const {
-        output(os, root);
-        os << std::endl;
-    }
-
-    /**
      * @brief Метод, который позволяет получить количество узлов в дереве
      * @return количество узлов в дереве
      */
@@ -313,59 +304,6 @@ public:
         return countNodes;
     }
 
-    [[nodiscard]] size_t getHeight() const;
-
-    /**
-     * @brief Выполняет итеративный инфиксный обход дерева и выводит ключи в порядке возрастания.
-     * @details Инфиксный обход посещает узлы в порядке: левое поддерево -> текущий узел -> правое поддерево.
-     *          Метод использует стек для эмуляции рекурсии, что позволяет избежать переполнения стека
-     *          при работе с большими деревьями.
-     *
-     * @example
-     * RedBlackTree<int> tree;
-     * tree.insert(5);
-     * tree.insert(3);
-     * tree.insert(7);
-     * tree.insert(2);
-     * tree.insert(4);
-     *
-     * tree.inorderWalkIterative(); // Выведет: 2 3 4 5 7
-     *
-     * @note Особенности:
-     * 1. Работает за O(n) времени и O(n) памяти (где n — количество узлов).
-     * 2. Если дерево пустое, метод не выводит ничего.
-     */
-    void inorderWalkIterative() const;
-
-    /**
-     * @brief Выполняет обход дерева в ширину (по уровням), выводя ключи узлов.
-     * @details Обход начинается с корня, затем посещаются все узлы текущего уровня
-     *          слева направо, после чего происходит переход на следующий уровень.
-     *          Для реализации используется очередь.
-     *
-     * @param os Поток вывода (по умолчанию std::cout), в который записываются ключи узлов.
-     *
-     * @note Особенности:
-     * 1. Сложность: O(n) по времени и O(n) по памяти (где n - количество узлов).
-     * 2. Для пустого дерева (root == NIL) метод не выполняет никаких действий.
-     * 3. Ключи выводятся в порядке их расположения в дереве по уровням.
-     *
-     * @example
-     * RedBlackTree<int> tree;
-     * tree.insert(10);
-     * tree.insert(5);
-     * tree.insert(15);
-     * tree.insert(3);
-     * tree.insert(7);
-     *
-     * tree.walkByLevels(); // Выведет: 10 5 15 3 7
-     *
-     * @example
-     * // Вывод в файл
-     * std::ofstream out("output.txt");
-     * tree.walkByLevels(out); // Запишет ключи в файл
-     */
-    void walkByLevels(std::ostream &os = std::cout) const;
 
 private:
     /**
@@ -520,7 +458,6 @@ private:
      */
     NodePtr minimum(NodePtr subtreeRoot);
 
-
     /**
      * @brief Восстанавливает свойства красно-чёрного дерева после удаления узла.
      *
@@ -560,35 +497,6 @@ private:
      */
     void fixDelete(NodePtr pivot);
 
-
-    /**
-     * @brief Рекурсивный вывод дерева в скобочной нотации.
-     * @param out Поток вывода.
-     * @param node Текущий узел для вывода.
-     * @details Формат вывода: (цвет:ключ левое_поддерево правое_поддерево)
-     *          Пример: (B:10 (R:5 (B:3) (B:7)) (B:15))
-     *
-     * Особенности:
-     * - NIL-узлы не выводятся
-     * - Цвет узла обозначается префиксом (R: для красного, B: для чёрного)
-     * - Поддеревья разделяются пробелами
-     */
-    void output(std::ostream &out, const NodePtr &node) const;
-
-    /**
-     * @brief Метод, который рекурсивно выводит в консоль дерево в порядке возрастания
-     * @param node - узел, который обрабатывается на данный момент
-     * @example
-     * tree.insert(5);
-     * tree.insert(7);
-     * tree.insert(3);
-     * tree.insert(10);
-     * tree.insert(20);
-     * tree.insert(30);
-     * tree.inorderWalk(); //Вывод: 3 5 7 10 20 30
-     */
-    void inorderWalk(NodePtr node) const;
-
     /**
      * @brief Создаёт фиктивный лист (NIL) с чёрным цветом и ссылками на себя.
      * @details Этот метод вызывается только один раз при инициализации статического члена NIL.
@@ -621,7 +529,7 @@ RedBlackTree<T, T0> & RedBlackTree<T, T0>::operator=(RedBlackTree &&other) noexc
 }
 
 template<typename T, typename T0>
-std::size_t RedBlackTree<T, T0>::get_frequency(T &arg) const {
+std::size_t RedBlackTree<T, T0>::getFrequency(T &arg) const {
     auto node = searchNode(arg);
     if (node != NIL) {
         return node->frequency_;
@@ -788,66 +696,6 @@ bool RedBlackTree<T, T0>::remove(const T &key) {
     return true;
 }
 
-template<typename T, typename T0>
-size_t RedBlackTree<T, T0>::getHeight() const {
-    if (root == NIL) {
-        return 0;
-    }
-    QueueList<NodePtr> queueList;
-    queueList.enQueue(root);
-    int height = 0;
-    while (!queueList.isEmpty()) {
-        size_t levelSize = queueList.size();
-        while (levelSize--) {
-            NodePtr current = queueList.deQueue();
-            if (current->left_ != NIL) {
-                queueList.enQueue(current->left_);
-            }
-            if (current->right_ != NIL) {
-                queueList.enQueue(current->right_);
-            }
-        }
-        ++height;
-    }
-    return height - 1;
-}
-
-template<typename T, typename T0>
-void RedBlackTree<T, T0>::inorderWalkIterative() const {
-    StackArray<NodePtr> stack(countNodes + 1);
-    if (root == NIL) return;
-    NodePtr current = root;
-    while (current != NIL || !stack.isEmpty()) {
-        while (current != NIL) {
-            stack.push(current);
-            current = current->left_;
-        }
-        current = stack.pop();
-        std::cout << current->key_ << " ";
-        current = current->right_;
-    }
-}
-
-template<typename T, typename T0>
-void RedBlackTree<T, T0>::walkByLevels(std::ostream &os) const {
-    if (root == NIL) return;
-
-    QueueList<NodePtr> q;
-    q.enQueue(root);
-
-    while (!q.isEmpty()) {
-        NodePtr current = q.deQueue();
-
-        os << current->key_ << " "; // Вывод ключа
-
-        if (current->left_ != NIL) {
-            q.enQueue(current->left_);
-        }
-        if (current->right_ != NIL) {
-            q.enQueue(current->right_);
-        }
-    }
-}
 
 template<typename T, typename T0>
 typename RedBlackTree<T, T0>::NodePtr RedBlackTree<T, T0>::getUncle(const NodePtr &node) const {
@@ -1055,29 +903,6 @@ void RedBlackTree<T, T0>::fixDelete(NodePtr pivot) {
         }
     }
     pivot->color_ = Color::BLACK; // Корень всегда чёрный
-}
-
-template<typename T, typename T0>
-void RedBlackTree<T, T0>::output(std::ostream &out, const NodePtr &node) const {
-    if (node == NIL) return;
-
-    out << "(";
-    out << (node->color_ == Color::RED ? "R:" : "B:") << node->key_;
-
-    if (node->left_ != NIL || node->right_ != NIL) {
-        output(out, node->left_);
-        output(out, node->right_);
-    }
-
-    out << ")";
-}
-
-template<typename T, typename T0>
-void RedBlackTree<T, T0>::inorderWalk(NodePtr node) const {
-    if (node == NIL) return;
-    inorderWalk(node->left_);
-    std::cout << node->key_ << " ";
-    inorderWalk(node->right_);
 }
 
 template<typename T, typename T0>
