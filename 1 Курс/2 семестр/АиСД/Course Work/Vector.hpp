@@ -179,11 +179,11 @@ bool Vector<T>::ConstIterator::operator!=(const ConstIterator &other) const {
 }
 
 template<typename T>
-Vector<T>::Vector(): data_(nullptr), capacity_(0), size_(0) {
+Vector<T>::Vector():  size_(0), capacity_(0), data_(nullptr) {
 }
 
 template<typename T>
-Vector<T>::Vector(std::size_t initial_size): capacity_(initial_size), size_(initial_size) {
+Vector<T>::Vector(std::size_t initial_size):  size_(initial_size), capacity_(initial_size) {
     data_ = new T[capacity_];
 }
 
@@ -193,7 +193,7 @@ Vector<T>::~Vector() {
 }
 
 template<typename T>
-Vector<T>::Vector(const Vector &other): capacity_(other.capacity_), size_(other.size_) {
+Vector<T>::Vector(const Vector &other): size_(other.size_), capacity_(other.capacity_) {
     data_ = new T[capacity_];
     for (std::size_t i = 0; i < size_; ++i) {
         data_[i] = other.data_[i];
